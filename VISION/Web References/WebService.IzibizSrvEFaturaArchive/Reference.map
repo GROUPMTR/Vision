@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://efatura.izibiz.com.tr:2453/EIArchiveWS/EFaturaArchive?xsd=2" filename="EFaturaArchive.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://efatura.izibiz.com.tr:2453/EIArchiveWS/EFaturaArchive?xsd=1" filename="EFaturaArchive0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://efatura.izibiz.com.tr:2453/EIArchiveWS/EFaturaArchive?xsd=3" filename="EFaturaArchive1.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://efatura.izibiz.com.tr:2453/EIArchiveWS/EFaturaArchive?xsd=6" filename="EFaturaArchive2.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://efatura.izibiz.com.tr:2453/EIArchiveWS/EFaturaArchive?xsd=8" filename="EFaturaArchive3.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://efatura.izibiz.com.tr:2453/EIArchiveWS/EFaturaArchive?xsd=5" filename="EFaturaArchive4.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://efatura.izibiz.com.tr:2453/EIArchiveWS/EFaturaArchive?xsd=7" filename="EFaturaArchive5.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="https://efatura.izibiz.com.tr:2453/EIArchiveWS/EFaturaArchive?wsdl" filename="EFaturaArchive.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://efatura.izibiz.com.tr:2453/EIArchiveWS/EFaturaArchive?xsd=4" filename="EFaturaArchive6.xsd" />
+  </Results>
+</DiscoveryClientResultsFile>

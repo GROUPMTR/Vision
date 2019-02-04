@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://efatura.izibiz.com.tr:2443/EFaturaOIB?xsd=2" filename="EFaturaOIB.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://efatura.izibiz.com.tr:2443/EFaturaOIB?xsd=1" filename="EFaturaOIB0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="https://efatura.izibiz.com.tr:2443/EFaturaOIB?wsdl" filename="EFaturaOIB.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://efatura.izibiz.com.tr:2443/EFaturaOIB?xsd=3" filename="EFaturaOIB1.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://efatura.izibiz.com.tr:2443/EFaturaOIB?xsd=4" filename="EFaturaOIB2.xsd" />
+  </Results>
+</DiscoveryClientResultsFile>

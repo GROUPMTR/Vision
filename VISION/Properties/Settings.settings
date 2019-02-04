@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="VISION.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="VISION_WebServices_SALES_INVOICES" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.219.168.91/SALES_INVOICES.asmx</Value>
+    </Setting>
+    <Setting Name="VISION_WebService_IziBizSrv_EFaturaOIB" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://efatura.izibiz.com.tr:2443/EFaturaOIB</Value>
+    </Setting>
+    <Setting Name="VISION_WebService_IzibizSrvEFaturaArchive_EFaturaArchive" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://efatura.izibiz.com.tr:2453/EIArchiveWS/EFaturaArchive</Value>
+    </Setting>
+    <Setting Name="VISION_WebService_IzibizSrvAuthentication_AuthenticationWS" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://efatura.izibiz.com.tr:2483/AuthenticationWS</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

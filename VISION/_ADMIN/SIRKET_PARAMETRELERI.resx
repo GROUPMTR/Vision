@@ -1,0 +1,641 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="BTN_KAPAT.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAARdEVYdFRpdGxlAENsb3NlO0V4aXQ7BRn/hQAAAKxJREFUOE+10jsKAkEQhOHNBPFxA0EzEQPv
+        4E08pBgbmBpuqJcQRLT9SxxpdVqGVYNvg2K6mGa2MrOv3D71Ym5N/LXgVJJFBTXG2LhshQl2LssWHDGE
+        sj5UouH2PZvijLBAlmhBeQ9puIM1HmejAvEl2WH5VOCvLWmdp3NRgR/uIt3krSRXcMAAaVjX9uvMcEFY
+        IFuM4HdWiZ5277KwQPScr1nxj1TsdwXNWXUFqQN1NeO4Ar4AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="BTN_KAPAT.LargeGlyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAJnRFWHRUaXRsZQBDb250YWN0
+        O0NhcmQ7SW5mbztEZXRhaWw7UGVyc29uOzLm8lkAAACTSURBVDhPY/j//z9FmKGlpeU/JRhsALmANgYc
+        vnHxf/umJWAaBkBqkDEMgNgYBoA0ly2fDqYJAaINAKlBxjAAYhPlBVwAw4Abzx79X3Jk1//a1XPANIgP
+        AiA1yBgGQGwUA+Yc2AJ2PgyD+PgAhgGN6+ajGADigwBIDTKGARAbIwxIAdQzgBKMNYeRgrEKEo//MwAA
+        QQZMSzsqhiAAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="BTN_KAYDET.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAALdEVYdFRpdGxlAFNhdmU7+ej5CQAAAvRJREFUOE+Fk11Ik1EYx1emIWIfVpqUkhkDwTRtbbr5
+        Oufmvpxz0+lsTrfhzK/8yO+VpgZFEXQTBN0GBSGFGEVRQXSZHxdhqRFdqE3nNCuXK2/+nedtFxJBB368
+        L+85/995znl4BaGxnRHG2PEX4f8gIgTNb2MIwjhNxStOVwGbewC9Q7fRNXAL7edvorn3Bhrar8PdcgWO
+        hkuodPdDb2mBrKAcWcrS1yxLQkEEp7XCM3gNVlcfAsFNBDb+sB7i+49N+L78gHclALWpAa09l5CtKgXL
+        RpJgp7SgDN39V2Gp9vBBWry4SgT4kFiqgZjTYmLWB6XBjRJbHSQKMwmiSBBJto7zl2GydfE7UtgbCn+Y
+        W0MWp4O6yIYFfwByrZMJaiGSF5MgmgRR4nwz2lhZReVtrNxfWFgO4JP3G95+9GOc7copjDCUOjG/vI6c
+        giqYT9cikzOQYDcJok/JjWjuHIS2pInfdfKDDxMzPowzxhhvppcwx8JzvnVkK2wwVbiRLtWSYC8JdpGt
+        sa0PKmMd8gtrodDXQK5xIVfjQI7KDqmykgVPIyuvAhK5FcXWGhwXq0mwjwR70qU6nGnxgCswwVjuYjhR
+        VOaEweJgVKOwtBr6kiroSuzQmSvZnAspIiUJDpAgJlWiRk1TDy/435Ap2X1YXBBm5JEgjgT7U0QqOOo6
+        WLnF/KLV7z+x+o0IYvVrEH727mfPFYYkT88qciA5jSNBPAliyWZ3t7IzGniBnwUpwLMWxPLaBo+PIZKp
+        2VGqkJQqJcEhEhw8lp4Lq/MsuyA9+kdncWFkBj0Pp9E5PI22++/RfO8dGu9Oof7OFE7KNNAUVyIxRUKC
+        BBLEJ6XKYLHXQ5SjxfXXS7j6ahGXX3ox9Pwz+p4uwPN4Ht2jc+hgZGSrWFfMSBCKSJBIgpjDwswxMmZI
+        1TANvUTRxRfQeZ5B3f0EinOPwDWPILv+AU7VDiNNnA/hCQ5xR45PsizfBfotqZ9kO7KFpC0c3UJy6Fus
+        QCAI/w0F4v5uZtgcHwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="BTN_KAYDET.LargeGlyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAJnRFWHRUaXRsZQBDb250YWN0
+        O0NhcmQ7SW5mbztEZXRhaWw7UGVyc29uOzLm8lkAAACTSURBVDhPY/j//z9FmKGlpeU/JRhsALmANgYc
+        vnHxf/umJWAaBkBqkDEMgNgYBoA0ly2fDqYJAaINAKlBxjAAYhPlBVwAw4Abzx79X3Jk1//a1XPANIgP
+        AiA1yBgGQGwUA+Yc2AJ2PgyD+PgAhgGN6+ajGADigwBIDTKGARAbIwxIAdQzgBKMNYeRgrEKEo//MwAA
+        QQZMSzsqhiAAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="BTN_LISTE.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAJnRFWHRUaXRsZQBDb250YWN0
+        O0NhcmQ7SW5mbztEZXRhaWw7UGVyc29uOzLm8lkAAACTSURBVDhPY/j//z9FmKGlpeU/JRhsALmANgYc
+        vnHxf/umJWAaBkBqkDEMgNgYBoA0ly2fDqYJAaINAKlBxjAAYhPlBVwAw4Abzx79X3Jk1//a1XPANIgP
+        AiA1yBgGQGwUA+Yc2AJ2PgyD+PgAhgGN6+ajGADigwBIDTKGARAbIwxIAdQzgBKMNYeRgrEKEo//MwAA
+        QQZMSzsqhiAAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="BTN_LISTE.LargeGlyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAJnRFWHRUaXRsZQBDb250YWN0
+        O0NhcmQ7SW5mbztEZXRhaWw7UGVyc29uOzLm8lkAAACTSURBVDhPY/j//z9FmKGlpeU/JRhsALmANgYc
+        vnHxf/umJWAaBkBqkDEMgNgYBoA0ly2fDqYJAaINAKlBxjAAYhPlBVwAw4Abzx79X3Jk1//a1XPANIgP
+        AiA1yBgGQGwUA+Yc2AJ2PgyD+PgAhgGN6+ajGADigwBIDTKGARAbIwxIAdQzgBKMNYeRgrEKEo//MwAA
+        QQZMSzsqhiAAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="memoEdit1.EditValue" xml:space="preserve">
+    <value>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Language" content="tr"&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-9"&gt;
+&lt;title&gt;E-FATURA ONAY MESAJI&lt;/title&gt;
+&lt;meta name="generator" content="hasan.yogurtcu@groupm.com"&gt;
+&lt;style type="text/css"&gt;
+div#container
+{
+   width: 433px;
+   position: relative;
+   margin: 0 auto 0 auto;
+   text-align: left;
+}
+body
+{
+   background-color: transparent;
+   color: #000000;
+   font-family: Arial;
+   font-size: 13px;
+   margin: 0;
+   text-align: center;
+}
+&lt;/style&gt;
+&lt;style type="text/css"&gt;
+a
+{
+   color: #0000FF;
+   text-decoration: underline;
+}
+a:visited
+{
+   color: #800080;
+}
+a:active
+{
+   color: #FF0000;
+}
+a:hover
+{
+   color: #0000FF;
+   text-decoration: underline;
+}
+&lt;/style&gt;
+&lt;style type="text/css"&gt;
+#wb_Text1 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_Text1 div
+{
+   text-align: left;
+}
+#wb_Text7 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: center;
+}
+#wb_Text7 div
+{
+   text-align: center;
+}
+#wb_Text5 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_Text5 div
+{
+   text-align: left;
+}
+#wb_Text2 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_Text2 div
+{
+   text-align: left;
+}
+#wb_Text3 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_Text3 div
+{
+   text-align: left;
+}
+#wb_Text4 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_Text4 div
+{
+   text-align: left;
+}
+#Image2
+{
+   border: 0px #000000 solid;
+}
+#Image3
+{
+   border: 0px #000000 solid;
+}
+#wb_TXT_USER_NAME 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_TXT_USER_NAME div
+{
+   text-align: left;
+}
+#wb_TXT_ILGILI 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_TXT_ILGILI div
+{
+   text-align: left;
+}
+#wb_Text10 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_Text10 div
+{
+   text-align: left;
+}
+#wb_TXT_FIRMA 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_TXT_FIRMA div
+{
+   text-align: left;
+}
+#wb_Text12 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_Text12 div
+{
+   text-align: left;
+}
+#wb_TXT_VKN 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_TXT_VKN div
+{
+   text-align: left;
+}
+#wb_Text14 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_Text14 div
+{
+   text-align: left;
+}
+#wb_TXT_MECRA_TURU 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_TXT_MECRA_TURU div
+{
+   text-align: left;
+}
+#wb_Text16 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_Text16 div
+{
+   text-align: left;
+}
+#wb_TXT_MECRA_ADI 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_TXT_MECRA_ADI div
+{
+   text-align: left;
+}
+#wb_Text18 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_Text18 div
+{
+   text-align: left;
+}
+#wb_Text19 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_Text19 div
+{
+   text-align: left;
+}
+#wb_Text8 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_Text8 div
+{
+   text-align: left;
+}
+#wb_TXT_TARIH 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_TXT_TARIH div
+{
+   text-align: left;
+}
+#wb_Text6 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_Text6 div
+{
+   text-align: left;
+}
+#Image1
+{
+   border: 0px #000000 solid;
+}
+#wb_Text9 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_Text9 div
+{
+   text-align: left;
+}
+#wb_TXT_FATURA_NO 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_TXT_FATURA_NO div
+{
+   text-align: left;
+}
+#wb_Text11 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_Text11 div
+{
+   text-align: left;
+}
+#wb_TXT_MUSTERI_KODU 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_TXT_MUSTERI_KODU div
+{
+   text-align: left;
+}
+#wb_Text15 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_Text15 div
+{
+   text-align: left;
+}
+#wb_Text17 
+{
+   background-color: transparent;
+   border: 0px #000000 solid;
+   padding: 0;
+   text-align: left;
+}
+#wb_Text17 div
+{
+   text-align: left;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id="container"&gt;
+  &lt;div id="wb_Text1" style="position:absolute;left:190px;top:285px;width:50px;height:29px;z-index:0;text-align:left;"&gt; &lt;span style="color:#000000;font-family:Tahoma;font-size:24px;"&gt;Red&lt;/span&gt;&lt;/div&gt;
+  &lt;div id="wb_Text7" style="position:absolute;left:0px;top:325px;width:425px;height:26px;text-align:center;z-index:1;"&gt; &lt;span style="color:#000000;font-family:Tahoma;font-size:11px;"&gt;Bu mail e-fatura sisteminden otomatik olarak kişiye özel gönderilmiştir.Herhangi bir şekilde paylaşılamaz.&lt;/span&gt;&lt;/div&gt;
+  &lt;div id="wb_Text5" style="position:absolute;left:285px;top:285px;width:65px;height:29px;z-index:2;text-align:left;"&gt; &lt;span style="color:#000000;font-family:Tahoma;font-size:24px;"&gt;Onay&lt;/span&gt;&lt;/div&gt;
+  &lt;div id="wb_Text2" style="position:absolute;left:20px;top:55px;width:90px;height:16px;z-index:3;text-align:left;"&gt;&lt;strong&gt; &lt;span style="color:#000000;font-family:Arial;font-size:13px;"&gt;Sayın:&lt;/span&gt;&lt;/strong&gt;&lt;/div&gt;
+  &lt;div id="wb_Text3" style="position:absolute;left:20px;top:75px;width:90px;height:16px;z-index:4;text-align:left;"&gt;&lt;strong&gt; &lt;span style="color:#000000;font-family:Arial;font-size:13px;"&gt;İlgili&lt;/span&gt;&lt;/strong&gt;&lt;/div&gt;
+  &lt;div id="wb_Text4" style="position:absolute;left:20px;top:10px;width:395px;height:29px;z-index:5;text-align:left;"&gt; &lt;span style="color:#000000;font-family:Tahoma;font-size:24px;"&gt;Onayınızı bekleyen e-fatura&lt;/span&gt;&lt;/div&gt;
+  &lt;div id="wb_Image2" style="position:absolute;left:355px;top:285px;width:36px;height:26px;z-index:6;"&gt; &lt;a href="http://localhost:1096/Fatura_Onay.aspx?OID=10&amp;UUID=0017A477-246E-1ED3-AEE8-6E5F723B10BF&amp;ID=DI32014036000279&amp;STAMP_NAME=hasan.yogurtccu@groupm.com&amp;STAMP_GUI=0017A477-246E-1ED3-AEE8-6E5F723A90BF&amp;FIRMAID=107"&gt;&lt;img src="images/like_button-like.png" alt="" name="Image2" border="0" id="Image2" style="width:36px;height:26px;"&gt;&lt;/a&gt;&lt;/div&gt;
+  &lt;div id="wb_Image3" style="position:absolute;left:245px;top:285px;width:36px;height:26px;z-index:7;"&gt; &lt;img src="images/like_button-dislike.png" id="Image3" alt="" style="width:36px;height:26px;"&gt;&lt;/div&gt;
+  &lt;div id="wb_TXT_USER_NAME" style="position:absolute;left:115px;top:55px;width:300px;height:16px;z-index:8;text-align:left;"&gt;&lt;/div&gt;
+  &lt;div id="wb_TXT_ILGILI" style="position:absolute;left:115px;top:75px;width:300px;height:16px;z-index:9;text-align:left;"&gt;&lt;/div&gt;
+  &lt;div id="wb_Text10" style="position:absolute;left:20px;top:95px;width:90px;height:16px;z-index:10;text-align:left;"&gt;&lt;strong&gt; &lt;span style="color:#000000;font-family:Arial;font-size:13px;"&gt;Firma&lt;/span&gt;&lt;/strong&gt;&lt;/div&gt;
+  &lt;div id="wb_TXT_FIRMA" style="position:absolute;left:115px;top:95px;width:300px;height:16px;z-index:11;text-align:left;"&gt;&lt;/div&gt;
+  &lt;div id="wb_Text12" style="position:absolute;left:20px;top:115px;width:90px;height:16px;z-index:12;text-align:left;"&gt;&lt;strong&gt; &lt;span style="color:#000000;font-family:Arial;font-size:13px;"&gt;Vkn&lt;/span&gt;&lt;/strong&gt;&lt;/div&gt;
+  &lt;div id="wb_TXT_VKN" style="position:absolute;left:115px;top:115px;width:110px;height:16px;z-index:13;text-align:left;"&gt;&lt;/div&gt;
+  &lt;div id="wb_Text14" style="position:absolute;left:20px;top:215px;width:90px;height:16px;z-index:14;text-align:left;"&gt;&lt;strong&gt; &lt;span style="color:#000000;font-family:Arial;font-size:13px;"&gt;Mecra Türü&lt;/span&gt;&lt;/strong&gt;&lt;/div&gt;
+  &lt;div id="wb_TXT_MECRA_TURU" style="position:absolute;left:115px;top:215px;width:110px;height:16px;z-index:15;text-align:left;"&gt;&lt;/div&gt;
+  &lt;div id="wb_Text16" style="position:absolute;left:20px;top:235px;width:90px;height:16px;z-index:16;text-align:left;"&gt;&lt;strong&gt; &lt;span style="color:#000000;font-family:Arial;font-size:13px;"&gt;Mecra Adı&lt;/span&gt;&lt;/strong&gt;&lt;/div&gt;
+  &lt;div id="wb_TXT_MECRA_ADI" style="position:absolute;left:115px;top:235px;width:300px;height:16px;z-index:17;text-align:left;"&gt;&lt;/div&gt;
+  &lt;div id="wb_Text18" style="position:absolute;left:20px;top:255px;width:90px;height:16px;z-index:18;text-align:left;"&gt;&lt;strong&gt; &lt;span style="color:#000000;font-family:Arial;font-size:13px;"&gt;Fatura Tutarı&lt;/span&gt;&lt;/strong&gt;&lt;/div&gt;
+  &lt;div id="wb_Text19" style="position:absolute;left:115px;top:255px;width:300px;height:16px;z-index:19;text-align:left;"&gt;&lt;/div&gt;
+  &lt;div id="wb_Text8" style="position:absolute;left:20px;top:135px;width:90px;height:16px;z-index:20;text-align:left;"&gt;&lt;strong&gt; &lt;span style="color:#000000;font-family:Arial;font-size:13px;"&gt;Tarih&lt;/span&gt;&lt;/strong&gt;&lt;/div&gt;
+  &lt;div id="wb_TXT_TARIH" style="position:absolute;left:115px;top:135px;width:110px;height:16px;z-index:21;text-align:left;"&gt;&lt;/div&gt;
+  &lt;div id="wb_Text6" style="position:absolute;left:25px;top:285px;width:115px;height:25px;z-index:22;text-align:left;"&gt; &lt;span style="color:#000000;font-family:Tahoma;font-size:24px;"&gt;Hata Bildir&lt;/span&gt;&lt;/div&gt;
+  &lt;div id="wb_Image1" style="position:absolute;left:145px;top:285px;width:36px;height:26px;z-index:23;"&gt; &lt;img src="images/like_button-dislike.png" alt="" name="Image1" id="Image1" style="width:36px;height:26px;"&gt;&lt;/div&gt;
+  &lt;div id="wb_Text9" style="position:absolute;left:20px;top:155px;width:90px;height:16px;z-index:24;text-align:left;"&gt;&lt;strong&gt; &lt;span style="color:#000000;font-family:Arial;font-size:13px;"&gt;Fatura No&lt;/span&gt;&lt;/strong&gt;&lt;/div&gt;
+  &lt;div id="wb_TXT_FATURA_NO" style="position:absolute;left:115px;top:155px;width:300px;height:16px;z-index:25;text-align:left;"&gt;&lt;/div&gt;
+  &lt;div id="wb_Text11" style="position:absolute;left:20px;top:175px;width:90px;height:16px;z-index:26;text-align:left;"&gt;&lt;strong&gt; &lt;span style="color:#000000;font-family:Arial;font-size:13px;"&gt;Müşteri Kodu&lt;/span&gt;&lt;/strong&gt;&lt;/div&gt;
+  &lt;div id="wb_TXT_MUSTERI_KODU" style="position:absolute;left:115px;top:175px;width:300px;height:16px;z-index:27;text-align:left;"&gt;&lt;/div&gt;
+  &lt;div id="wb_Text15" style="position:absolute;left:20px;top:195px;width:90px;height:16px;z-index:28;text-align:left;"&gt;&lt;strong&gt; &lt;span style="color:#000000;font-family:Arial;font-size:13px;"&gt;Müşteri Grubu&lt;/span&gt;&lt;/strong&gt;&lt;/div&gt;
+  &lt;div id="wb_Text17" style="position:absolute;left:115px;top:195px;width:110px;height:16px;z-index:29;text-align:left;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</value>
+  </data>
+  <data name="txtStokSql.EditValue" xml:space="preserve">
+    <value>select  ROW_NUMBER() OVER(ORDER BY x.LOGICALREF DESC) AS 'RowId',x.* FROM(
+SELECT     'MALZEME' AS STOK_TUR, it.SPECODE, it.CODE, it.STGRPCODE, it.NAME, it.NAME3, u.NAME AS UNITSETL_NAME, it.NAME2, it.LOGICALREF, it.ACTIVE, it.CARDTYPE, 
+                      it.VAT, it.TRACKTYPE, u.LOGICALREF AS UNITSETREF, '{1}' AS FIRMA, 0 AS T, u.GLOBALCODE
+FROM         {0}.dbo.LG_{1}_ITEMS it WITH (NOLOCK) LEFT OUTER JOIN
+                      {0}.dbo.LG_{1}_UNITSETL AS u ON it.UNITSETREF = u.UNITSETREF
+WHERE     (it.CLASSTYPE = 0) AND (it.ACTIVE = 0) AND (it.SALESBRWS = 1) and  u.MAINUNIT=1
+
+UNION ALL
+
+SELECT     N'HIZMET' AS STOK_TUR, srv.SPECODE, srv.CODE, CAST('' AS NVARCHAR) AS STGRPCODE, srv.DEFINITION_ AS NAME, CAST('' AS NVARCHAR) AS NAME3, 
+                      ul.CODE AS UNITSETL_NAME, '' AS NAME2, srv.LOGICALREF, srv.ACTIVE, srv.CARDTYPE, srv.VAT, 0 AS TRACKTYPE, ul.LOGICALREF AS UNITSETREF, 
+                      '{1}' AS FIRMA, 4 AS T, ul.GLOBALCODE
+FROM         {0}.dbo.LG_{1}_SRVCARD srv WITH (NOLOCK) LEFT OUTER JOIN
+                      {0}.dbo.LG_{1}_UNITSETF AS uf ON srv.UNITSETREF = uf.LOGICALREF LEFT OUTER JOIN
+                      {0}.dbo.LG_{1}_UNITSETL AS ul ON uf.LOGICALREF = ul.UNITSETREF
+WHERE     (srv.ACTIVE = 0) AND (((srv.CARDTYPE &gt; 2) OR
+                      ((srv.ACTIVE &gt; 0)) OR
+                      ((srv.ACTIVE = 0))) OR
+                      ((srv.ACTIVE = 0)))
+UNION ALL
+
+SELECT     'İNDİRİM' AS STOK_TUR, ind.SPECODE, ind.CODE, ind.CYPHCODE, ind.DEFINITION_ AS NAME, '' AS NAME3, ind.UNITSTR AS UNITSETL_NAME, '' AS NAME2, 
+                      ind.LOGICALREF, ind.ACTIVE, ind.CARDTYPE, ind.VAT, '' AS TRACKTYPE, 0 AS UNITSETREF, '{1}' AS FIRMA, 3 AS T, '' AS GLOBALCODE
+FROM         {0}.dbo.LG_{1}_DECARDS ind(NOLOCK)) as x</value>
+  </data>
+  <data name="txtPaySql.EditValue" xml:space="preserve">
+    <value>SELECT DISTINCT 
+                      RIGHT('000' + CONVERT(nvarchar(3), fr.NR), 3) AS NR, fr.NAME, fr.TITLE, fr.STREET, fr.ROAD, fr.DOORNR, fr.CITY, fr.COUNTRY, fr.ZIPCODE, fr.PHONE1, fr.FAX, 
+                      fr.TAXOFF, fr.TAXNR, fr.SITEID, fr.TAXOFFCODE, fr.WEBADDR, fr.EMAILADDR,fr.LOGICALREF,ACCEPTEINV
+FROM       {0}.dbo.L_CAPIFIRM AS fr INNER JOIN
+                      {0}.dbo.L_CAPIPERIOD AS per ON fr.NR = per.FIRMNR  where fr.ACCEPTEINV=1 </value>
+  </data>
+  <data name="txtFaturaSatirSql.EditValue" xml:space="preserve">
+    <value>SELECT DISTINCT 
+                      RIGHT('000' + CONVERT(nvarchar(3), fr.NR), 3) AS NR, fr.NAME, fr.TITLE, fr.STREET, fr.ROAD, fr.DOORNR, fr.CITY, fr.COUNTRY, fr.ZIPCODE, fr.PHONE1, fr.FAX, 
+                      fr.TAXOFF, fr.TAXNR, fr.SITEID, fr.TAXOFFCODE, fr.WEBADDR, fr.EMAILADDR,fr.LOGICALREF,ACCEPTEINV
+FROM       {0}.dbo.L_CAPIFIRM AS fr INNER JOIN
+                      {0}.dbo.L_CAPIPERIOD AS per ON fr.NR = per.FIRMNR  where fr.ACCEPTEINV=1 </value>
+  </data>
+  <data name="txtSipSql.EditValue" xml:space="preserve">
+    <value>SELECT     ord.FICHENO, ord.DATE_, it.CODE, it.NAME, orl.AMOUNT , orl.SHIPPEDAMOUNT, orl.PRICE, orl.TOTAL, orl.VAT, orl.VATAMNT, orl.VATMATRAH, ord.TOTALVAT, ord.NETTOTAL, 
+                      ord.TOTALDISCOUNTS, ord.TOTALDISCOUNTED, ord.ADDDISCOUNTS, ord.TRCODE, ord.CLIENTREF, ord.LOGICALREF, orl.STOCKREF, orl.LINETYPE, 
+                      orl.LOGICALREF AS LINELOGICALREF, orl.TRCODE AS TRLINE, orl.GLOBTRANS, orl.DISCPER
+FROM         {0}.dbo.LG_{1}_{2}_ORFICHE AS ord INNER JOIN
+                      {0}.dbo.LG_{1}_{2}_ORFLINE AS orl ON ord.LOGICALREF = orl.ORDFICHEREF INNER JOIN
+                      dbo.vLOGO_ITEMS_{1} AS it ON orl.STOCKREF = it.LOGICALREF AND orl.LINETYPE = it.T   WHERE     (ord.TRCODE = 2)</value>
+  </data>
+  <data name="txtFirmaSql.EditValue" xml:space="preserve">
+    <value>SELECT DISTINCT 
+                      RIGHT('000' + CONVERT(nvarchar(3), fr.NR), 3) AS NR, fr.NAME, fr.TITLE, fr.STREET, fr.ROAD, fr.DOORNR, fr.CITY, fr.COUNTRY, fr.ZIPCODE, fr.PHONE1, fr.FAX, 
+                      fr.TAXOFF, fr.TAXNR, fr.SITEID, fr.TAXOFFCODE, fr.WEBADDR, fr.EMAILADDR,fr.LOGICALREF,ACCEPTEINV
+FROM       {0}.dbo.L_CAPIFIRM AS fr INNER JOIN
+                      {0}.dbo.L_CAPIPERIOD AS per ON fr.NR = per.FIRMNR  where fr.ACCEPTEINV=1 </value>
+  </data>
+</root>
