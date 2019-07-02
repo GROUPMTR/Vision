@@ -139,12 +139,31 @@ namespace VISION.FINANS.GIB
                 myConnection.Close();
             }
 
-            _FATURA_DURUM_UPDATE(dr["ID"].ToString(), true);
+            _FATURA_DURUM_UPDATE(dr["ID"].ToString(), true, dr["FATURANIN_TURU"].ToString());
             string xmlfl = "", xsltfl = "";
             if (dr != null)
             {
                 xmlfl = appPath + @"_OUTBOX\" + _GLOBAL_PARAMETERS._SIRKET_KODU.ToString() + @"\" + dr["ID"] + ".xml";
-                xsltfl = appPath + @"_OUTBOX\" + _GLOBAL_PARAMETERS._SIRKET_KODU.ToString() + @"\" + dr["ID"] + ".xslt";
+
+                //     xsltfl = appPath + @"_OUTBOX\" + _GLOBAL_PARAMETERS._SIRKET_KODU.ToString() + @"\" + dr["ID"] + ".xslt";
+
+
+
+                if (dr["FATURANIN_TURU"].ToString()  == "e-fatura")
+                {
+
+                    xsltfl = appPath + "\\_XSLT\\EFATURA\\" + _GLOBAL_PARAMETERS._SIRKET_KODU.ToString() + "\\GENERIC_TEMPLATE.xslt";
+                }
+
+                if (dr["FATURANIN_TURU"].ToString() == "e-arşiv")
+                {
+                    xsltfl = appPath + "\\_XSLT\\EARSIVE\\" + _GLOBAL_PARAMETERS._SIRKET_KODU.ToString() + "\\GENERIC_TEMPLATE.xslt";
+ 
+                }
+
+
+              
+
             }
             string USERNAME = _GLOBAL_PARAMETERS._KULLANICI_ADI_SOYADI.Replace(".", "");
             if (File.Exists(@"c:\temp\_PRINT\" + USERNAME + "TMP.html")) File.Delete(@"c:\temp\_PRINT\" + USERNAME + "TMP.html");
@@ -174,7 +193,7 @@ namespace VISION.FINANS.GIB
 
 
 
-        public string _FATURA_DURUM_UPDATE(string NUMBER, bool STATUS)
+        public string _FATURA_DURUM_UPDATE(string NUMBER, bool STATUS,string FATURANIN_TURU)
         { 
             string DURUM_BILGISI = string.Empty;
             int _LOGICALREF = 0;
@@ -196,19 +215,38 @@ namespace VISION.FINANS.GIB
                         }
                     }
                 }
+                 
+                if (FATURANIN_TURU == "e-fatura")
+                {  
+                    Query Queryf = _GLOBAL_PARAMETERS.Global.UnityApp.NewQuery();
+                    string QueryString = " UPDATE  dbo.LG_" + _GLOBAL_PARAMETERS._SIRKET_NO.ToString() + "_01_INVOICE  SET ESTATUS='4' WHERE LOGICALREF=" + _LOGICALREF + "";
+                    Queryf.Statement = QueryString;
+                    Boolean res = Queryf.Execute();
+                    if (res)
+                    {
+                        DURUM_BILGISI = "OK";
+                    }
+                    else
+                    {
+                        DURUM_BILGISI = Queryf.Error.ToString();
+                    }
+                } 
 
-                Query Queryf = _GLOBAL_PARAMETERS.Global.UnityApp.NewQuery();
-                string QueryString = " UPDATE  dbo.LG_" + _GLOBAL_PARAMETERS._SIRKET_NO.ToString() + "_01_INVOICE  SET ESTATUS='4' WHERE LOGICALREF=" + _LOGICALREF + "";
-                Queryf.Statement = QueryString;
-                Boolean res = Queryf.Execute();
-                if (res)
-                {
-                    DURUM_BILGISI = "OK";
-                }
-                else
-                {
-                    DURUM_BILGISI = Queryf.Error.ToString();
-                }
+                if (FATURANIN_TURU == "e-arşiv")
+                {  
+                    Query Queryf = _GLOBAL_PARAMETERS.Global.UnityApp.NewQuery();
+                    string QueryString = " UPDATE  dbo.LG_" + _GLOBAL_PARAMETERS._SIRKET_NO.ToString() + "_01_EARCHIVEDET SET EARCHIVESTATUS='4' WHERE LOGICALREF=" + _LOGICALREF + "";
+                    Queryf.Statement = QueryString;
+                    Boolean res = Queryf.Execute();
+                    if (res)
+                    {
+                        DURUM_BILGISI = "OK";
+                    }
+                    else
+                    {
+                        DURUM_BILGISI = Queryf.Error.ToString();
+                    } 
+                }   
             }
             else
             {
@@ -226,21 +264,40 @@ namespace VISION.FINANS.GIB
                             eof = Querys.Next();
                         }
                     }
+                } 
+
+                if (FATURANIN_TURU == "e-fatura")
+                { 
+                    Query Queryf = _GLOBAL_PARAMETERS.Global.UnityApp.NewQuery();
+                    string QueryString = " UPDATE  dbo.LG_" + _GLOBAL_PARAMETERS._SIRKET_NO.ToString() + "_01_INVOICE  SET ESTATUS='0' WHERE LOGICALREF=" + _LOGICALREF + "";
+                    Queryf.Statement = QueryString;
+                    Boolean res = Queryf.Execute();
+                    if (res)
+                    {
+                        DURUM_BILGISI = "OK";
+                    }
+                    else
+                    {
+                        DURUM_BILGISI = Queryf.Error.ToString();
+                    } 
                 }
 
-                Query Queryf = _GLOBAL_PARAMETERS.Global.UnityApp.NewQuery();
-                string QueryString = " UPDATE  dbo.LG_" + _GLOBAL_PARAMETERS._SIRKET_NO.ToString() + "_01_INVOICE  SET ESTATUS='0' WHERE LOGICALREF=" + _LOGICALREF + "";
-                Queryf.Statement = QueryString;
-                Boolean res = Queryf.Execute();
-                if (res)
+                if (FATURANIN_TURU == "e-arşiv") 
                 {
-                    DURUM_BILGISI = "OK";
-                }
-                else
-                {
-                    DURUM_BILGISI = Queryf.Error.ToString();
-                }
 
+                    Query Queryf = _GLOBAL_PARAMETERS.Global.UnityApp.NewQuery();
+                    string QueryString = " UPDATE  dbo.LG_" + _GLOBAL_PARAMETERS._SIRKET_NO.ToString() + "_01_EARCHIVEDET  SET EARCHIVESTATUS='0' WHERE LOGICALREF=" + _LOGICALREF + "";
+                    Queryf.Statement = QueryString;
+                    Boolean res = Queryf.Execute();
+                    if (res)
+                    {
+                        DURUM_BILGISI = "OK";
+                    }
+                    else
+                    {
+                        DURUM_BILGISI = Queryf.Error.ToString();
+                    }
+                }
             }
             return DURUM_BILGISI;
         }
@@ -453,7 +510,21 @@ namespace VISION.FINANS.GIB
                 {
                     BR_FILE.Caption = appPath + @"_OUTBOX\" + _GLOBAL_PARAMETERS._SIRKET_KODU + @"\" + dr["ID"] + ".xml";
                     xmlfl = appPath + @"_OUTBOX\" + _GLOBAL_PARAMETERS._SIRKET_KODU + @"\" + dr["ID"] + ".xml";
-                    xsltfl = appPath + @"_XSLT\" + _GLOBAL_PARAMETERS._SIRKET_KODU + @"\GENERIC_TEMPLATE.xslt";/// +dr["FICHENO"] + "_" + dr["GUID"] + ".xslt";
+              ///      xsltfl = appPath + @"_XSLT\" + _GLOBAL_PARAMETERS._SIRKET_KODU + @"\GENERIC_TEMPLATE.xslt";/// +dr["FICHENO"] + "_" + dr["GUID"] + ".xslt";
+
+
+
+                    if (dr["FATURANIN_TURU"].ToString() == "e-fatura")
+                    {
+
+                        xsltfl = appPath + "\\_XSLT\\EFATURA\\" + _GLOBAL_PARAMETERS._SIRKET_KODU.ToString() + "\\GENERIC_TEMPLATE.xslt";
+                    }
+
+                    if (dr["FATURANIN_TURU"].ToString() == "e-arşiv")
+                    {
+                        xsltfl = appPath + "\\_XSLT\\EARSIVE\\" + _GLOBAL_PARAMETERS._SIRKET_KODU.ToString() + "\\GENERIC_TEMPLATE.xslt";
+
+                    }
 
 
                     //if (File.Exists(xmlfl)) File.Delete(xmlfl);
@@ -602,7 +673,25 @@ namespace VISION.FINANS.GIB
                 {
                     BR_FILE.Caption = appPath + @"_OUTBOX\" + _GLOBAL_PARAMETERS._SIRKET_KODU + @"\" + dr["ID"] + ".xml";
                     xmlfl = appPath + @"_OUTBOX\" + _GLOBAL_PARAMETERS._SIRKET_KODU + @"\" + dr["ID"] + ".xml";
-                    xsltfl = appPath + @"_OUTBOX\" + _GLOBAL_PARAMETERS._SIRKET_KODU + @"\" + dr["ID"] + ".xslt";
+
+
+
+
+                    if (dr["FATURANIN_TURU"].ToString() == "e-fatura")
+                    {
+
+                        xsltfl = appPath + "\\_XSLT\\EFATURA\\" + _GLOBAL_PARAMETERS._SIRKET_KODU.ToString() + "\\GENERIC_TEMPLATE.xslt";
+                    }
+
+                    if (dr["FATURANIN_TURU"].ToString() == "e-arşiv")
+                    {
+                        xsltfl = appPath + "\\_XSLT\\EARSIVE\\" + _GLOBAL_PARAMETERS._SIRKET_KODU.ToString() + "\\GENERIC_TEMPLATE.xslt";
+
+                    }
+
+
+
+             //       xsltfl = appPath + @"_OUTBOX\" + _GLOBAL_PARAMETERS._SIRKET_KODU + @"\" + dr["ID"] + ".xslt";
                 }
                 if (xsltfl != "")
                 {
@@ -696,9 +785,43 @@ namespace VISION.FINANS.GIB
 
                     if (dr != null)
                     {
+                      //  BR_FILE.Caption = appPath + @"_OUTBOX\" + _GLOBAL_PARAMETERS._SIRKET_KODU + @"\" + dr["ID"] + ".xml";
+                      //  xmlfl = appPath + @"_OUTBOX\" + _GLOBAL_PARAMETERS._SIRKET_KODU + @"\" + dr["ID"] + ".xml";
+                      ////  xsltfl = appPath + @"_XSLT\" + _GLOBAL_PARAMETERS._SIRKET_KODU + @"\GENERIC_TEMPLATE.xslt";/// +dr["FICHENO"] + "_" + dr["GUID"] + ".xslt";
+
+
+
+                      //  if (dr["FATURANIN_TURU"].ToString() == "e-fatura")
+                      //  {
+
+                      //      xsltfl = appPath + "\\_XSLT\\EFATURA\\" + _GLOBAL_PARAMETERS._SIRKET_KODU.ToString() + "\\GENERIC_TEMPLATE.xslt";
+                      //  }
+
+                      //  if (dr["FATURANIN_TURU"].ToString() == "e-arşiv")
+                      //  {
+                      //      xsltfl = appPath + "\\_XSLT\\EARSIVE\\" + _GLOBAL_PARAMETERS._SIRKET_KODU.ToString() + "\\GENERIC_TEMPLATE.xslt";
+
+                      //  }
+
+
                         BR_FILE.Caption = appPath + @"_OUTBOX\" + _GLOBAL_PARAMETERS._SIRKET_KODU + @"\" + dr["ID"] + ".xml";
                         xmlfl = appPath + @"_OUTBOX\" + _GLOBAL_PARAMETERS._SIRKET_KODU + @"\" + dr["ID"] + ".xml";
-                        xsltfl = appPath + @"_XSLT\" + _GLOBAL_PARAMETERS._SIRKET_KODU + @"\GENERIC_TEMPLATE.xslt";/// +dr["FICHENO"] + "_" + dr["GUID"] + ".xslt";
+
+
+
+
+                        if (dr["FATURANIN_TURU"].ToString() == "e-fatura")
+                        {
+
+                            xsltfl = appPath + "\\_XSLT\\EFATURA\\" + _GLOBAL_PARAMETERS._SIRKET_KODU.ToString() + "\\GENERIC_TEMPLATE.xslt";
+                        }
+
+                        if (dr["FATURANIN_TURU"].ToString() == "e-arşiv")
+                        {
+                            xsltfl = appPath + "\\_XSLT\\EARSIVE\\" + _GLOBAL_PARAMETERS._SIRKET_KODU.ToString() + "\\GENERIC_TEMPLATE.xslt";
+
+                        }
+
                     }
 
                     //if (File.Exists(xmlfl)) File.Delete(xmlfl);
@@ -767,7 +890,7 @@ namespace VISION.FINANS.GIB
 
             if (barEditItem1.EditValue != null)
             {
-                _FATURA_DURUM_UPDATE(barEditItem1.EditValue.ToString(), false);
+                _FATURA_DURUM_UPDATE(barEditItem1.EditValue.ToString(), false, dr["FATURANIN_TURU"].ToString());
             }
 
 
@@ -862,8 +985,9 @@ namespace VISION.FINANS.GIB
                     //if (dr["TYPE"].ToString() == "3") FATURA_TIPI = "SATIŞ İADE";
                     //if (dr["TYPE"].ToString() == "8") FATURA_TIPI = "SATIŞ";
 
+                 
 
-                    _FATURA_DURUM_UPDATE(dr["ID"].ToString(), false);
+                    _FATURA_DURUM_UPDATE(dr["ID"].ToString(), false, dr["FATURANIN_TURU"].ToString() );
 
 
                     _GLOBAL_PARAMETERS.LOG_ISLEMLERI LF = new _GLOBAL_PARAMETERS.LOG_ISLEMLERI();
@@ -885,7 +1009,7 @@ namespace VISION.FINANS.GIB
                 for (int ix = 0; ix <= selectedRows.Length - 1; ix++)
                 {
                     DataRow drx = gridView_LIST.GetDataRow(selectedRows[ix]);
-                    _FATURA_DURUM_UPDATE(drx["ID"].ToString(), true);
+                    _FATURA_DURUM_UPDATE(drx["ID"].ToString(), true, drx["FATURANIN_TURU"].ToString() );
 
                     string SQL_ROW = @" UPDATE dbo.FTR_GIB_TRANSFER SET ERP_AKTARILDI='True' Where SIRKET_KODU='{0}'  and ID='{1}'  ";
                     SQL_ROW = string.Format(SQL_ROW, _GLOBAL_PARAMETERS._SIRKET_KODU.ToString(), drx["ID"].ToString());
@@ -911,7 +1035,11 @@ namespace VISION.FINANS.GIB
                 for (int ix = 0; ix <= selectedRows.Length - 1; ix++)
                 {
                     DataRow drx = gridView_LIST.GetDataRow(selectedRows[ix]);
-                    _FATURA_DURUM_UPDATE(drx["ID"].ToString(), false);
+                    _FATURA_DURUM_UPDATE(drx["ID"].ToString(), false, drx["FATURANIN_TURU"].ToString());
+
+
+
+
                     string SQL_ROW = @" UPDATE dbo.FTR_GIB_TRANSFER SET ERP_AKTARILDI='False' Where SIRKET_KODU='{0}'  and ID='{1}'  ";
                     SQL_ROW = string.Format(SQL_ROW, _GLOBAL_PARAMETERS._SIRKET_KODU.ToString(), drx["ID"].ToString());
                     using (SqlCommand cmd = new SqlCommand())

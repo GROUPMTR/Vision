@@ -37,8 +37,8 @@ namespace VISION.FINANS.MUHASEBE_AKTARIMI_MANUEL.SATIS
             using (SqlConnection myConnection = new SqlConnection(_GLOBAL_PARAMETERS._CONNECTIONSTRING_MDB.ToString()))
             {
                 string SQL = "";
-                if (FATURANIN_TURU == "e-arşiv") SQL = "  SELECT * FROM   dbo.FTR_ERP_FATURA_SERISI where  FIRMA_CODE =@FIRMA_CODE  and FATURA_TYPE='A'   ";
-                if (FATURANIN_TURU == "e-fatura") SQL = "  SELECT * FROM   dbo.FTR_ERP_FATURA_SERISI where  FIRMA_CODE =@FIRMA_CODE  and FATURA_TYPE='E'   ";
+                if (FATURANIN_TURU == "e-arşiv") SQL = "  SELECT * FROM   dbo.FTR_ERP_FATURA_SERISI where  FIRMA_CODE=@FIRMA_CODE  and  (DEFAULT_ = 1)   and FATURA_TYPE='A'   ";
+                if (FATURANIN_TURU == "e-fatura") SQL = "  SELECT * FROM   dbo.FTR_ERP_FATURA_SERISI where  FIRMA_CODE=@FIRMA_CODE and  (DEFAULT_ = 1)   and FATURA_TYPE='E'   ";
                 SqlCommand myCommand = new SqlCommand(SQL, myConnection);
                 myCommand.Parameters.AddWithValue("@FIRMA_CODE", _GLOBAL_PARAMETERS._SIRKET_NO);
                 myCommand.CommandText = SQL.ToString();

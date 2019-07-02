@@ -1,0 +1,136 @@
+ <html lang="tr">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>
+      PazarlamaStiTalebi
+    </title> 
+</head>
+  <body style="margin: 0; padding: 0; background: #0B486B ;" bgcolor="#0B486B">
+  		<table cellpadding="0" cellspacing="0" border="0" align="center" width="100%" style="padding: 35px 0; background: #0B486B ;">
+		  <tr>
+		  	<td align="center" style="margin: 0; padding: 0;" >
+			    <table width="600" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#000066" class="header" style="font-family: Helvetica, Arial, sans-serif; background:white;">
+			      	<tr>
+						<td width="600" height="7" colspan="2" align="left" bgcolor="#3A89C9" style="line-height: 0; height: 7px;">&nbsp;</td>
+			      </tr>
+					<tr>
+					<td width="20" bgcolor="#1B325F"style="font-size: 0px;">&nbsp;</td>
+			        <td width="580" align="left" bgcolor="#1B325F" style="padding: 18px 0 10px;">
+						<h1 style="color: #E9F2F9; font: bold 32px Helvetica, Arial, sans-serif; margin: 0; padding: 0; line-height: 40px;"><span class="style1">Pazarlama Şirketi</span> Talep Formu</h1>
+						<p style="color: #E9F2F9; font: normal 12px Helvetica, Arial, sans-serif; margin: 0; padding: 0; line-height: 18px;">Lütfen bilgileri kontrol edip onaylayınız.</p>
+			        </td>
+			      </tr>
+			  </table>
+				<table cellpadding="0" cellspacing="0" border="0" align="center" width="600" style="font-family: Helvetica, Arial, sans-serif; background: #fff;" bgcolor="#fff">
+			      	
+					<tr>
+			        <td width="600" valign="top" align="left" style="font-family: Helvetica, Arial, sans-serif; padding: 20px 0 0;" class="content">
+						<table cellpadding="0" cellspacing="0" border="0"  style="color: #717171; font: normal 11px Helvetica, Arial, sans-serif; margin: 0; padding: 0;" width="600">
+						<tr>
+							<td width="21" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
+							<td width="558" align="left" style="padding: 20px 0 0;"><h2 style="color:#3A89C9; font-weight: bold; margin: 0; padding: 0; line-height: 26px; font-size: 18px; font-family: Helvetica, Arial, sans-serif; ">Pazarlama Şirketi Kodu: UNVANI</h2>							</td>
+							<td width="21" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
+						</tr>
+						<tr>
+							<td width="21" height="127" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
+						  <td style="padding: 15px 0 15px;"  valign="top"><table cellpadding="0" cellspacing="0" border="0" width="558">
+								<tr>
+								  <td width="145" valign="top"><span style="color:#3A89C9; font-weight: normal; margin: 0; padding: 0; line-height: 20px; font-size: 12px;font-family: Helvetica, Arial, sans-serif; ">Talebin Türü :</span></td> 
+								  <td width="413" valign="top">TALEBIN_TURU</td>
+						    </tr>
+								<tr>
+								  <td valign="top"><span style="color:#3A89C9; font-weight: normal; margin: 0; padding: 0; line-height: 20px; font-size: 12px;font-family: Helvetica, Arial, sans-serif; ">Diğer :</span></td>
+								  <td valign="top">DIGER</td>
+						    </tr>
+								<tr>
+								  <td valign="top"><span style="color:#3A89C9; font-weight: normal; margin: 0; padding: 0; line-height: 20px; font-size: 12px;font-family: Helvetica, Arial, sans-serif; ">Mecra Türü :</span></td>
+								  <td valign="top">MECRA_TURU</td>
+						    </tr>
+								<tr>
+								  <td valign="top"><span style="color:#3A89C9; font-weight: normal; margin: 0; padding: 0; line-height: 20px; font-size: 12px;font-family: Helvetica, Arial, sans-serif;">Pazarlama Şirketi :</span></td>
+								  <td valign="top">PAZARLAMA_SIRKETI</td>
+						    </tr>
+								<tr>
+								  <td valign="top"><span style="color:#3A89C9; font-weight: normal; margin: 0; padding: 0; line-height: 20px; font-size: 12px;font-family: Helvetica, Arial, sans-serif; ">Adresi :</span></td>
+								  <td valign="top">ADRESI</td>
+						    </tr>
+								<tr>
+								  <td valign="top"><span style="color:#3A89C9; font-weight: normal; margin: 0; padding: 0; line-height: 20px; font-size: 12px;font-family: Helvetica, Arial, sans-serif; ">Telefon :</span></td>
+								  <td valign="top">TELEFON</td>
+						    </tr>
+								<tr>
+								  <td valign="top"><span style="color:#3A89C9; font-weight: normal; margin: 0; padding: 0; line-height: 20px; font-size: 12px;font-family: Helvetica, Arial, sans-serif; ">Fax :</span></td>
+								  <td valign="top">FAX</td>
+						    </tr>
+								<tr>
+								  <td valign="top"><span style="color:#3A89C9; font-weight: normal; margin: 0; padding: 0; line-height: 20px; font-size: 12px;font-family: Helvetica, Arial, sans-serif; ">Vergi Dairesi :</span></td>
+								  <td valign="top">VERGIDAIRESI</td>
+						    </tr>
+								<tr>
+								  <td valign="top"><span style="color:#3A89C9; font-weight: normal; margin: 0; padding: 0; line-height: 20px; font-size: 12px;font-family: Helvetica, Arial, sans-serif; ">Vergi No :</span></td>
+								  <td valign="top">VERGINO</td>
+						    </tr>
+								<tr>
+								  <td valign="top"><span style="color:#3A89C9; font-weight: normal; margin: 0; padding: 0; line-height: 20px; font-size: 12px;font-family: Helvetica, Arial, sans-serif; ">Açıklama :</span></td>
+								  <td valign="top">ACIKLAMA</td>
+						    </tr>
+								<tr>
+								  <td valign="top"><span style="color:#3A89C9; font-weight: normal; margin: 0; padding: 0; line-height: 20px; font-size: 12px;font-family: Helvetica, Arial, sans-serif;">Firma Türü :</span></td>
+								  <td valign="top">FIRMA_TURU</td>
+						    </tr>
+								<tr>
+								  <td valign="top"><span style="color:#3A89C9; font-weight: normal; margin: 0; padding: 0; line-height: 20px; font-size: 12px;font-family: Helvetica, Arial, sans-serif;">IBAN :</span></td>
+								  <td valign="top">IBAN</td>
+						    </tr>
+								<tr>
+								  <td valign="top"><span style="color:#3A89C9; font-weight: normal; margin: 0; padding: 0; line-height: 20px; font-size: 12px;font-family: Helvetica, Arial, sans-serif;"><span class="style3">Hesap No :</span></span></td>
+								  <td valign="top">HESAP_NO</td>
+						    </tr>
+								<tr>
+								  <td valign="top"><span style="color:#3A89C9; font-weight: normal; margin: 0; padding: 0; line-height: 20px; font-size: 12px;font-family: Helvetica, Arial, sans-serif;">E-Mail :</span></td>
+								  <td valign="top">E-MAIL</td>
+						    </tr>
+								<tr>
+								  <td valign="top"><span style="color:#3A89C9; font-weight: normal; margin: 0; padding: 0; line-height: 20px; font-size: 12px;font-family: Helvetica, Arial, sans-serif;">TC Kimlik No :</span></td>
+								  <td valign="top">TC_KIMLIK_NO</td>
+						    </tr>
+								<tr>
+								  <td valign="top"><span style="color:#3A89C9; font-weight: normal; margin: 0; padding: 0; line-height: 20px; font-size: 12px;font-family: Helvetica, Arial, sans-serif; ">Cari Hesap Kodu :</span></td>
+								  <td valign="top">CARI_HESAP_KODU</td>
+						    </tr>
+								<tr>
+								  <td valign="top"><span style="color:#3A89C9; font-weight: normal; margin: 0; padding: 0; line-height: 20px; font-size: 12px;font-family: Helvetica, Arial, sans-serif; ">Muhasebe Hesap Kodu :</span></td>
+								  <td valign="top">MUHASEBE_HESAP_KODU</td>
+						    </tr>
+								
+								<tr>
+								  <td valign="top"><span style="color:#3A89C9; font-weight: normal; margin: 0; padding: 0; line-height: 20px; font-size: 12px;font-family: Helvetica, Arial, sans-serif; ">İstekte Bulunan :</span></td>
+								  <td valign="top">ISTEKTE_BULUNAN</td>
+						    </tr>
+							</table>							</td>
+							<td width="21" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
+						</tr>
+						<tr>
+							<td width="21" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
+							<td align="center" valign="middle" bgcolor="#1B325F" style="padding: 15px 0 0;" ><h2 align="center" style="color:#E9F2F9; font-weight: bold; margin: 0; padding: 0; line-height: 26px; font-size: 18px; font-family: Helvetica, Arial, sans-serif;">ONAY_LINKI</h2></td>
+							<td width="21" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
+						</tr>
+						</table>	
+					</td>
+					
+			      </tr>
+				  	<tr>
+						<td width="600" height="3" colspan="2" align="left" bgcolor="#3A89C9" style="padding: font-size: 0; line-height: 0; height: 3px;">&nbsp;</td>
+			      </tr>	
+				</table><!-- body -->
+				<table cellpadding="0" cellspacing="0" border="0" align="center" width="600" style="font-family: Helvetica, Arial, sans-serif; line-height: 10px;" class="footer"> 
+				<tr>
+		          <td align="center" style="padding: 5px 0 10px; font-size: 11px; color:#E9F2F9; margin: 0; line-height: 1.2;font-family: Helvetica, Arial, sans-serif;" valign="top"><div align="center">Pazarlama Şirketi açılış talebini bilgisayarınızdan onaylayabilirsiniz.</div></td>
+				</tr>
+				</table><!-- footer-->
+		  	</td>
+		  	</td>
+		</tr>
+    </table>
+  </body>
+</html>

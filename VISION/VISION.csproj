@@ -277,6 +277,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DOKUMAN\EVRAK_GIRIS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DOKUMAN\EVRAK_GIRIS.Designer.cs" />
+    <Compile Include="DOKUMAN\EVRAK_LISTESI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DOKUMAN\EVRAK_LISTESI.Designer.cs" />
+    <Compile Include="DOKUMAN\EVRAK_PRINT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DOKUMAN\EVRAK_PRINT.Designer.cs" />
     <Compile Include="FINANS\ERP\ADMIN\CL_CARD_ADD.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -576,30 +588,6 @@
     </Compile>
     <Compile Include="FORMLAR\FATURA\TASLAK\SINEMA\SINEMA_PROFORMA.Designer.cs">
       <DependentUpon>SINEMA_PROFORMA.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FORMLAR\ORDINO\BASIN\ORDINO.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="FORMLAR\ORDINO\BASIN\ORDINO.Designer.cs">
-      <DependentUpon>ORDINO.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FORMLAR\ORDINO\DERGI\ORDINO.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="FORMLAR\ORDINO\DERGI\ORDINO.Designer.cs">
-      <DependentUpon>ORDINO.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FORMLAR\ORDINO\GAZETE\ORDINO.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="FORMLAR\ORDINO\GAZETE\ORDINO.Designer.cs">
-      <DependentUpon>ORDINO.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FORMLAR\REZERVASYON\TELEVIZYON\REZERVASYON.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="FORMLAR\REZERVASYON\TELEVIZYON\REZERVASYON.Designer.cs">
-      <DependentUpon>REZERVASYON.cs</DependentUpon>
     </Compile>
     <Compile Include="LOGIN.cs">
       <SubType>Form</SubType>
@@ -1008,6 +996,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DOKUMAN\EVRAK_GIRIS.resx" />
+    <EmbeddedResource Include="DOKUMAN\EVRAK_LISTESI.resx" />
+    <EmbeddedResource Include="DOKUMAN\EVRAK_PRINT.resx" />
     <EmbeddedResource Include="FINANS\ERP\ADMIN\CL_CARD_ADD.resx">
       <DependentUpon>CL_CARD_ADD.cs</DependentUpon>
     </EmbeddedResource>
@@ -1151,15 +1142,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FORMLAR\FATURA\TASLAK\SINEMA\SINEMA_PROFORMA.resx">
       <DependentUpon>SINEMA_PROFORMA.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FORMLAR\ORDINO\BASIN\ORDINO.resx">
-      <DependentUpon>ORDINO.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FORMLAR\ORDINO\DERGI\ORDINO.resx">
-      <DependentUpon>ORDINO.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FORMLAR\ORDINO\GAZETE\ORDINO.resx">
-      <DependentUpon>ORDINO.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LOGIN.resx">
       <DependentUpon>LOGIN.cs</DependentUpon>
@@ -1360,14 +1342,8 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>

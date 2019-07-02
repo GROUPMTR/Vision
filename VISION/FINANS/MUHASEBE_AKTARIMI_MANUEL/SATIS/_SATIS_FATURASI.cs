@@ -24,18 +24,22 @@ namespace VISION.FINANS.MUHASEBE_AKTARIMI_MANUEL.SATIS
             ConnLine_DEFAULT.Open();
             SqlDataReader drd = myCommand_DEFAULT.ExecuteReader(CommandBehavior.CloseConnection);
             while (drd.Read())
-            {
+            { 
                 if (drd["ACCEPTEINV"] == DBNull.Value)
                 {
-                    E_FATURA_KONTROL = 0;
+                    E_FATURA_KONTROL = 2;
                 }
                 else
                 {
                     if (drd["ACCEPTEINV"].ToString() != "")
                     { E_FATURA_KONTROL = Convert.ToInt16(drd["ACCEPTEINV"].ToString()); }
                     else
-                    { E_FATURA_KONTROL = 0; }
+                    { E_FATURA_KONTROL = 2; }
                 }
+
+                // E-arşive 
+                if (E_FATURA_KONTROL == 0) E_FATURA_KONTROL = 2;
+
             }
             return E_FATURA_KONTROL;
         }
@@ -154,7 +158,7 @@ namespace VISION.FINANS.MUHASEBE_AKTARIMI_MANUEL.SATIS
                     doSlsInvoice = _GLOBAL_PARAMETERS.Global.UnityApp.NewDataObject(UnityObjects.DataObjectType.doSalesInvoice);
                     doSlsInvoice.New();
                     doSlsInvoice.DataFields.FieldByName("TYPE").Value = doSlsINVOICEHDR["TYPE"];  
-                    if (E_FATURA_TYPE == 1)
+                    if (E_FATURA_TYPE > 0)
                     {
                         if (FATURA_SERISI == null) { doSlsInvoice.DataFields.FieldByName("NUMBER").Value = "~"; }
                         else
@@ -162,8 +166,8 @@ namespace VISION.FINANS.MUHASEBE_AKTARIMI_MANUEL.SATIS
                             using (SqlConnection conn = new SqlConnection( _GLOBAL_PARAMETERS._CONNECTIONSTRING_ERP))
                             {
                                 using (SqlCommand cmd = new SqlCommand())
-                                {
-                                    string sql = "    SELECT REPLACE(MAX(FICHENO), '" + FATURA_SERISI + "', '') as FICHENO FROM  LG_" +  _GLOBAL_PARAMETERS._SIRKET_NO + "_01_INVOICE  WHERE EINVOICE=1 and (TRCODE=8 or TRCODE=9 or TRCODE=6) and FICHENO LIKE '" + FATURA_SERISI + "%'";
+                                { /// EINVOICE=1 and
+                                    string sql = "    SELECT REPLACE(MAX(FICHENO), '" + FATURA_SERISI + "', '') as FICHENO FROM  LG_" +  _GLOBAL_PARAMETERS._SIRKET_NO + "_01_INVOICE  WHERE (TRCODE=8 or TRCODE=9 or TRCODE=6) and FICHENO LIKE '" + FATURA_SERISI + "%'";
                                     cmd.CommandText = sql;
                                     cmd.CommandType = System.Data.CommandType.Text;
                                     cmd.Connection = conn;
@@ -491,8 +495,7 @@ namespace VISION.FINANS.MUHASEBE_AKTARIMI_MANUEL.SATIS
 
                                 int XC= _CreateItems.IndexOf("HATA;");
                                 if (XC > 1) 
-                                {
-
+                                { 
                                     using (SqlConnection myConnections = new SqlConnection(_GLOBAL_PARAMETERS._CONNECTIONSTRING_MDB))
                                     {
                                         myConnections.Open();
@@ -698,10 +701,7 @@ namespace VISION.FINANS.MUHASEBE_AKTARIMI_MANUEL.SATIS
                                     }                                  
                                     doSlsInvoiceLines[doSlsInvoiceLines.Count - 1].FieldByName("GL_CODE2").Value = "191.02.001.0001";
                                 }
-                            }
-
-
-
+                            } 
 
                             if (doSlsINVOICELine_Control.ToString() == "4") // AHB %
                             {                                 

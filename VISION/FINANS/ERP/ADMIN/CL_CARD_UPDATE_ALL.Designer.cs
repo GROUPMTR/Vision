@@ -597,8 +597,8 @@
             // 
             this.BR_LOGO_LOAD.Caption = "Logo";
             this.BR_LOGO_LOAD.Id = 27;
-            this.BR_LOGO_LOAD.ImageOptions.Image = global::VISION.Properties.Resources.display;
-            this.BR_LOGO_LOAD.ImageOptions.LargeImage = global::VISION.Properties.Resources.display;
+ 
+      
             this.BR_LOGO_LOAD.Name = "BR_LOGO_LOAD";
             this.BR_LOGO_LOAD.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BR_LOGO_LOAD_ItemClick);
             // 

@@ -18,6 +18,7 @@ namespace VISION
         {
             InitializeComponent();
 
+           _GLOBAL_PARAMETERS._SIRKET_KODU = "";
            _GLOBAL_PARAMETERS._KULLANICI_ADI_SOYADI = "";
            _GLOBAL_PARAMETERS._KULLANICI_DEPARTMANI = "";
            _GLOBAL_PARAMETERS._TOPLANTI_KISITLAMASI = false;
@@ -137,7 +138,9 @@ namespace VISION
                             MASTER_RibbonCntrl.PageCategories[i].Pages[x].Visible = false;
                         }
                         MASTER_RibbonCntrl.PageCategories[i].Visible = false;
-                    } 
+                    }
+
+                 
                     BAR_USER_NAME.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
                     BAR_SIRKET_KODU.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
                     BAR_SERVER_NAME.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
@@ -201,7 +204,16 @@ namespace VISION
                         {
                             if (TreeView_Sabitler.Nodes.Count == 0) MessageBox.Show("Programı kullanma yetkiniz yok menü hakları isteyiniz.");
                         }
-                    } 
+                    }
+
+                BTN_GIRIS_KULLANCI_DEGISTIR.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                RIB_PAGE_GRUP_GIRIS_KULLANICI_ISLEMLERI.Visible = false;
+
+
+                BTN_GIRIS_MEETING.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                BTN_GIRIS_TIME_SHEET_RAPOR_FAKE.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                BTN_GIRIS_COMPANY_TODO.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                BTN_GIRIS_MY_TODO.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             }
             else
             {
@@ -314,8 +326,8 @@ namespace VISION
                     break;
 
                 case "BTN_GIRIS_KULLANCI_DEGISTIR":
-                    _GLOBAL_PARAMETERS.Global.UnityApp.Disconnect();
-                    FORM_LOAD();
+                    //_GLOBAL_PARAMETERS.Global.UnityApp.Disconnect();
+                    //FORM_LOAD();
                     break;
 
                 default :

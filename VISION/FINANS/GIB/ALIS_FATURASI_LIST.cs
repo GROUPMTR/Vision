@@ -395,12 +395,17 @@ namespace VISION.FINANS.GIB
 
                 BR_PROGRESS_BAR.EditValue = Convert.ToInt32(BR_PROGRESS_BAR.EditValue) + re_PROGRESS_BAR.Step;
                 BR_PROGRESS_BAR.Refresh();
-
                 lst.Add(new WebService.IziBizSrv.INVOICE()
                 {
                     ID = inv.ID,
                     UUID = inv.UUID
                 });
+
+                string fl = pKok + "\\" + inv.ID + "_" + inv.UUID + ".xml";
+                if (File.Exists(fl))
+                    File.Delete(fl);
+                File.WriteAllBytes(fl, inv.CONTENT.Value);
+
                 string KONTROL = "";
                 using (SqlConnection con = new SqlConnection(_GLOBAL_PARAMETERS._CONNECTIONSTRING_MDB.ToString()))
                 {
@@ -429,10 +434,10 @@ namespace VISION.FINANS.GIB
 
                 if (KONTROL == "")
                 {
-                    string fl = pKok + "\\" + inv.ID + "_" + inv.UUID + ".xml";
-                    if (File.Exists(fl))
-                        File.Delete(fl);
-                    File.WriteAllBytes(fl, inv.CONTENT.Value);
+                    //string fl = pKok + "\\" + inv.ID + "_" + inv.UUID + ".xml";
+                    //if (File.Exists(fl))
+                    //    File.Delete(fl);
+                    //File.WriteAllBytes(fl, inv.CONTENT.Value);
 
                     SqlConnection myConnection = new SqlConnection(_GLOBAL_PARAMETERS._CONNECTIONSTRING_MDB.ToString());
                     string HEADER_TABLE_EMPTY_SQL = @" Select top 0 * From dbo.FTR_GELEN_FATURALAR ";
@@ -600,7 +605,7 @@ namespace VISION.FINANS.GIB
                     UBL.PartyType prt = invx.AccountingSupplierParty.Party;
 
                     newHeaderRow["AccSupplierPartyWebsiteURI"] = prt.WebsiteURI == null ? "" : prt.WebsiteURI.Value;
-                    newHeaderRow["AccSupplierPartyName"] = prt.PartyName.Name.Value;
+                 //   newHeaderRow["AccSupplierPartyName"] = prt.PartyName.Name.Value == null ? "" : prt.PartyName.Name.Value; //= prt.PartyName.Name.Value;
 
                     foreach (UBL.PartyIdentificationType pi in prt.PartyIdentification)
                     {
@@ -1547,10 +1552,24 @@ namespace VISION.FINANS.GIB
                             System.Threading.Thread.Sleep(900);
                             //wbh.Url = null;
                             //wbh.Refresh();  
-                            XslCompiledTransform XSLT = new XslCompiledTransform();
-                            XsltSettings settings = new XsltSettings();
-                            settings.EnableScript = true;
-                            XSLT.Load(xsltfl, settings, new XmlUrlResolver());
+                            //XslCompiledTransform XSLT = new XslCompiledTransform();
+                            //XsltSettings settings = new XsltSettings();
+                            //settings.EnableScript = true;
+                            //XSLT.Load(xsltfl, settings, new XmlUrlResolver());
+
+
+                            XslCompiledTransform XSLT = new XslCompiledTransform(true);
+                            XSLT.Load(
+                                XmlReader.Create(xsltfl,
+                                new XmlReaderSettings()
+                                {
+                                    DtdProcessing = DtdProcessing.Parse
+                                }),
+                                new XsltSettings(true, false),
+                                new XmlUrlResolver()
+                            );
+
+
                             XSLT.Transform(xmlfl, @"c:\temp\_PRINT\" + ix + USERNAME + "TMP.html");
                             String appdir = Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath);
                             String myfile = Path.Combine(appdir, @"c:\temp\_PRINT\" + ix + USERNAME + "TMP.html");
@@ -1674,10 +1693,39 @@ namespace VISION.FINANS.GIB
                         System.Threading.Thread.Sleep(700);
                         //wbh.Url = null;
                         //wbh.Refresh();  
-                        XslCompiledTransform XSLT = new XslCompiledTransform();
-                        XsltSettings settings = new XsltSettings();
-                        settings.EnableScript = true;
-                        XSLT.Load(xsltfl, settings, new XmlUrlResolver());
+
+
+
+                        //XmlReaderSettings sett = new XmlReaderSettings();
+                        //sett.DtdProcessing = DtdProcessing.Ignore;
+                        //XmlReader reader = XmlReader.Create(xmlfl, sett);
+                        //XmlDocument document = new XmlDocument();
+                        //document.Load(reader);
+
+
+
+                        //XslCompiledTransform XSLT = new XslCompiledTransform();
+                        //XsltSettings settings = new XsltSettings();
+                        ////settings.EnableDocumentFunction = false;
+                        //settings.EnableScript = true;
+
+
+
+
+                        XslCompiledTransform XSLT = new XslCompiledTransform(true);
+                        XSLT.Load(
+                            XmlReader.Create(xsltfl,
+                            new XmlReaderSettings()
+                            {
+                                DtdProcessing = DtdProcessing.Parse
+                            }),
+                            new XsltSettings(true, false),
+                            new XmlUrlResolver()
+                        );
+
+
+
+                //        XSLT.Load(xsltfl, settings, new XmlUrlResolver());
                         XSLT.Transform(xmlfl, @"c:\temp\_PRINT\" + ix + USERNAME + "TMP.html");
 
                         WKHtmlToPdf(@"c:\temp\_PRINT\" + ix + USERNAME + "TMP.html", @"c:\temp\_PRINT\", dr["ID"] + ".pdf");
@@ -1715,9 +1763,7 @@ namespace VISION.FINANS.GIB
             if (brwsr.ShowDialog() == DialogResult.Cancel)
                 return;
             else
-            {
-
-
+            { 
                 int[] selectedRows = gridView_MASTERS.GetSelectedRows();
                 for (int ix = 0; ix <= selectedRows.Length - 1; ix++)
                 {
@@ -1777,10 +1823,30 @@ namespace VISION.FINANS.GIB
                             System.Threading.Thread.Sleep(700);
                             //wbh.Url = null;
                             //wbh.Refresh();  
-                            XslCompiledTransform XSLT = new XslCompiledTransform();
-                            XsltSettings settings = new XsltSettings();
-                            settings.EnableScript = true;
-                            XSLT.Load(xsltfl, settings, new XmlUrlResolver());
+
+                            XslCompiledTransform XSLT = new XslCompiledTransform(true);
+                            XSLT.Load(
+                                XmlReader.Create(xsltfl,
+                                new XmlReaderSettings()
+                                {
+                                    DtdProcessing = DtdProcessing.Parse
+                                }),
+                                new XsltSettings(true, false),
+                                new XmlUrlResolver()
+                            );
+
+
+
+                            //XslCompiledTransform XSLT = new XslCompiledTransform();
+                            //XsltSettings settings = new XsltSettings();
+                            //settings.EnableScript = true;
+                          
+
+                            ////XmlReaderSettings xrs = new XmlReaderSettings();
+                            ////xrs.ProhibitDtd = false;
+
+                            //XSLT.Load(xsltfl, XsltSettings.Default, new XmlUrlResolver());
+                           // XSLT.Load(xsltfl, settings, new XmlUrlResolver());
                             XSLT.Transform(xmlfl, @"c:\temp\_PRINT\" + ix + USERNAME + "TMP.html");
 
                             WKHtmlToPdf(@"c:\temp\_PRINT\" + ix + USERNAME + "TMP.html", brwsr.SelectedPath, dr["ID"] + ".pdf");
@@ -1962,10 +2028,27 @@ namespace VISION.FINANS.GIB
 
                     try
                     {
-                        XslCompiledTransform XSLT = new XslCompiledTransform();
-                        XsltSettings settings = new XsltSettings();
-                        settings.EnableScript = true;
-                        XSLT.Load(xsltfl, settings, new XmlUrlResolver());
+
+                        XslCompiledTransform XSLT = new XslCompiledTransform(true);
+                        XSLT.Load(
+                            XmlReader.Create(xsltfl,
+                            new XmlReaderSettings()
+                            {
+                                DtdProcessing = DtdProcessing.Parse
+                            }),
+                            new XsltSettings(true, false),
+                            new XmlUrlResolver()
+                        );
+
+
+
+                        //XslCompiledTransform XSLT = new XslCompiledTransform();
+                        //XsltSettings settings = new XsltSettings();
+                        //settings.EnableScript = true;
+                        //XSLT.Load(xsltfl, settings, new XmlUrlResolver());
+
+
+
                         XSLT.Transform(xmlfl, @"c:\temp\_PRINT\" + USERNAME + "TMP.html");
                         //UBL_VIEWER vv = new UBL_VIEWER();
                         String appdir = Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath);
@@ -1977,7 +2060,7 @@ namespace VISION.FINANS.GIB
                     catch
                     {
                         //   xsltfl = appPath + @"_XSLT\template.xslt";
-                        xsltfl = appPath + @"_XSLT\" + _GLOBAL_PARAMETERS._SIRKET_KODU + @"\GENERIC_TEMPLATE.xslt";
+                        xsltfl = appPath + @"_XSLT\EFATURA\TMP\GENERIC_TEMPLATE.xslt";
                         XslCompiledTransform XSLT = new XslCompiledTransform();
                         XsltSettings settings = new XsltSettings();
                         settings.EnableScript = true;

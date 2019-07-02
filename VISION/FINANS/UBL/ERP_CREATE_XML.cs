@@ -560,10 +560,28 @@ namespace VISION.FINANS.UBL
             Inv.AdditionalDocumentReference[0].Attachment.EmbeddedDocumentBinaryObject.filename = GIBFNO + ".xslt";
             Inv.AdditionalDocumentReference[0].Attachment.EmbeddedDocumentBinaryObject.mimeCode = BinaryObjectMimeCodeContentType.applicationxml;
 
-            string appPath = Path.GetDirectoryName(Application.ExecutablePath);
-            byte[] binarydata = File.ReadAllBytes(appPath + "\\_TEMPLATE\\_XSLT\\" + FIRMA_KODU + "\\GENERIC_TEMPLATE.xslt");
-            string base64 = System.Convert.ToBase64String(binarydata, 0, binarydata.Length);
-            Inv.AdditionalDocumentReference[0].Attachment.EmbeddedDocumentBinaryObject.Value = Convert.FromBase64String(base64);
+
+            string appPath = _GLOBAL_PARAMETERS._FILE_PATH;
+
+            if (FATURA_TYPE == "e-fatura")
+            {
+              
+                byte[] binarydata = File.ReadAllBytes(appPath + "\\_XSLT\\EFATURA\\" + FIRMA_KODU + "\\GENERIC_TEMPLATE.xslt");
+                string base64 = System.Convert.ToBase64String(binarydata, 0, binarydata.Length);
+                Inv.AdditionalDocumentReference[0].Attachment.EmbeddedDocumentBinaryObject.Value = Convert.FromBase64String(base64);
+            }
+
+            if (FATURA_TYPE == "e-arşiv")
+            {
+              
+                byte[] binarydata = File.ReadAllBytes(appPath + "\\_XSLT\\EARSIVE\\" + FIRMA_KODU + "\\GENERIC_TEMPLATE.xslt");
+                string base64 = System.Convert.ToBase64String(binarydata, 0, binarydata.Length);
+                Inv.AdditionalDocumentReference[0].Attachment.EmbeddedDocumentBinaryObject.Value = Convert.FromBase64String(base64);
+            }
+
+
+
+       
 
             #endregion
 
@@ -895,7 +913,7 @@ namespace VISION.FINANS.UBL
 
                 notList.Add(new NoteType()
                 {
-                    Value = "Yanlız " + _GLOBAL_PARAMETERS.PARAYI_YAZIYA_CEVIR.yaziyaCevir(ToplamKdvDahil_TRY, CURCODES, underCur).ToString()//, Cur, underCur)
+                    Value = "Yanlız " + _GLOBAL_PARAMETERS.PARAYI_YAZIYA_CEVIR.yaziyaCevir_TRL(ToplamKdvDahil_TRY, CURCODES, underCur).ToString()//, Cur, underCur)
                 });
             }
             else
@@ -904,13 +922,13 @@ namespace VISION.FINANS.UBL
                 underCur = " Cent"; 
                 notList.Add(new NoteType()
                 {
-                    Value = "Yanlız " + _GLOBAL_PARAMETERS.PARAYI_YAZIYA_CEVIR.yaziyaCevir(ToplamKdvDahil, CURCODES, underCur).ToString()//, Cur, underCur)
+                    Value = "Only : " + _GLOBAL_PARAMETERS.PARAYI_YAZIYA_CEVIR.yaziyaCevir_Usd(ToplamKdvDahil, CURCODES, underCur).ToString()//, Cur, underCur)
                 });
 
-                notList.Add(new NoteType()
-                {
-                    Value = "Yanlız " + _GLOBAL_PARAMETERS.PARAYI_YAZIYA_CEVIR.yaziyaCevir(ToplamKdvDahil_TRY, " TürkLirası ", " Kuruş").ToString()//, Cur, underCur)
-                }); 
+                //notList.Add(new NoteType()
+                //{
+                //    Value = "Yanlız " + _GLOBAL_PARAMETERS.PARAYI_YAZIYA_CEVIR.yaziyaCevir_TRL(ToplamKdvDahil_TRY, " TürkLirası ", " Kuruş").ToString()//, Cur, underCur)
+                //}); 
             } 
 
             string OzelparaBirim = "", OzelKur = "";
@@ -1091,16 +1109,18 @@ namespace VISION.FINANS.UBL
             }
             Inv.Note = notList.ToArray();
 
-            string pppth = "";
-            appPath = _GLOBAL_PARAMETERS._FILE_PATH;// Path.GetDirectoryName(Application.ExecutablePath);
+            string pppth = ""; appPath =_GLOBAL_PARAMETERS._FILE_PATH; 
             if (Temp)
             {
-                pppth = System.IO.Path.GetTempPath() + "\\" + Guid.NewGuid().ToString() + ".xml";
+              //  pppth = System.IO.Path.GetTempPath() + "\\" + Guid.NewGuid().ToString() + ".xml";
+                pppth = appPath + BOX + @"\" + _GLOBAL_PARAMETERS._SIRKET_KODU + @"\" + Guid.NewGuid().ToString() + ".xml";
+
+              //  pppth = appPath + BOX + @"\" + _GLOBAL_PARAMETERS._SIRKET_KODU + @"\" + GIBFNO + ".xml";
             }
             else
             {
                 //if (!Directory.Exists(appPath +  BOX))    //    Directory.CreateDirectory(appPath +BOX);  
-                pppth = appPath + BOX + @"\" + _GLOBAL_PARAMETERS._SIRKET_KODU + @"\" + GIBFNO + ".xml";
+                pppth = appPath+ BOX + @"\" + _GLOBAL_PARAMETERS._SIRKET_KODU + @"\" + GIBFNO + ".xml";
                 if (File.Exists(pppth)) File.Delete(pppth);
             }
 

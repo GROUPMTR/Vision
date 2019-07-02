@@ -108,10 +108,43 @@ namespace VISION.FINANS.MUHASEBE_AKTARIMI_MANUEL.ALIM
             // 0 Malzeme 740 , 600 ,601 , 610
             // 2 indirim  611
 
-            int lastLogicalRef;
+
+            string GELEN_FATURA_TURU = "";
+
+            string QueryFatura = "  SELECT * FROM dbo.FTR_LG_INVOICE  WHERE SIRKET_KODU='" + _GLOBAL_PARAMETERS._SIRKET_KODU + "' AND  (AKTARIM_DURUMU =N'BEKLEMEDE' or AKTARIM_DURUMU =N'AKTARILMADI' ) AND (NUMBER='" + FATURA_NUMARASI + "') ";
+
+            SqlConnection Con = new SqlConnection(_GLOBAL_PARAMETERS._CONNECTIONSTRING_MDB);
+            SqlCommand myCmdSub = new SqlCommand(QueryFatura, Con);
+            Con.Open();
+            SqlDataReader doINVOICEHDR = myCmdSub.ExecuteReader(CommandBehavior.CloseConnection);
+            while (doINVOICEHDR.Read())
+            { 
+                string mySelectQueryLine = "  SELECT  *  FROM     dbo.FTR_LG_STLINE  where  SIRKET_KODU=@SIRKET_KODU AND  INVOICE_REF=@INVOICE_REF ";
+                SqlConnection ceConnLine = new SqlConnection(_GLOBAL_PARAMETERS._CONNECTIONSTRING_MDB);
+                SqlCommand myCommandSubLine = new SqlCommand();
+                myCommandSubLine.Parameters.AddWithValue("@SIRKET_KODU", _GLOBAL_PARAMETERS._SIRKET_KODU);
+                myCommandSubLine.Parameters.AddWithValue("@INVOICE_REF", Convert.ToInt32(doINVOICEHDR["ID"])); 
+                myCommandSubLine.CommandText = mySelectQueryLine;
+                myCommandSubLine.CommandType = System.Data.CommandType.Text;
+                myCommandSubLine.Connection = ceConnLine;
+                ceConnLine.Open();
+                SqlDataReader doINVOICELine = myCommandSubLine.ExecuteReader(CommandBehavior.CloseConnection); 
+                while (doINVOICELine.Read())
+                {
+                    if (doINVOICELine["DESCRIPTION"].ToString() == "Stopaj")
+                    {
+                        GELEN_FATURA_TURU = "Stopaj";
+                        break;
+                    }
+                }
+            }
+
+
+
+                int lastLogicalRef;
             int INVOICE_REF_ID = 0;
             string DEFNFLD_LEVEL_ = "", DEFNFLD_MODULENR = "", DEFNFLD_DOC_TRACK_NR = "", DEFNFLD_PLAN_KODU = "", DEFNFLD_FATURA_BASKI_SEKLI = "", DEFNFLD_FAKTORING_SIRKETI_KODU = "", DEFNFLD_ILGILI_FATURA_NO = "", DEFNFLD_SIPARISI_VEREN = "", DEFNFLD_DEPARTMAN = "", DEFNFLD_BOLGE_KODU = "", DEFNFLD_ILGILI_IS_UNITESI = "", DEFNFLD_EFATURA_KODU = "",
-                   DEFNFLD_FAC_CARI_KODU = "", DEFNFLD_FAC_MUHASEBE_KODU = "";
+                   DEFNFLD_FAC_CARI_KODU = "", DEFNFLD_FAC_MUHASEBE_KODU = ""; 
             if (_GLOBAL_PARAMETERS.Global.UnityApp.Connected)
             {
                 string mySelectQuery = "  SELECT * FROM dbo.FTR_LG_INVOICE  WHERE SIRKET_KODU='" + _GLOBAL_PARAMETERS._SIRKET_KODU + "' AND  (AKTARIM_DURUMU =N'BEKLEMEDE' or AKTARIM_DURUMU =N'AKTARILMADI' ) AND (NUMBER='" + FATURA_NUMARASI + "') ";
@@ -147,11 +180,11 @@ namespace VISION.FINANS.MUHASEBE_AKTARIMI_MANUEL.ALIM
                             if (FATURA_SERISI == null) { doPrhInvoice.DataFields.FieldByName("NUMBER").Value = "~"; }
                             else
                             {
-                                using (SqlConnection conn = new SqlConnection( _GLOBAL_PARAMETERS._CONNECTIONSTRING_ERP))
+                                using (SqlConnection conn = new SqlConnection(_GLOBAL_PARAMETERS._CONNECTIONSTRING_ERP))
                                 {
                                     using (SqlCommand cmd = new SqlCommand())
                                     {
-                                        string sql = "    SELECT REPLACE(MAX(FICHENO), '" + FATURA_SERISI + "', '') as FICHENO FROM  LG_" +  _GLOBAL_PARAMETERS._SIRKET_NO + "_01_INVOICE WHERE EINVOICE=1 and (TRCODE=8 or TRCODE=9 or TRCODE=6) and FICHENO LIKE '" + FATURA_SERISI + "%'";
+                                        string sql = "    SELECT REPLACE(MAX(FICHENO), '" + FATURA_SERISI + "', '') as FICHENO FROM  LG_" + _GLOBAL_PARAMETERS._SIRKET_NO + "_01_INVOICE WHERE EINVOICE=1 and (TRCODE=8 or TRCODE=9 or TRCODE=6) and FICHENO LIKE '" + FATURA_SERISI + "%'";
                                         cmd.CommandText = sql;
                                         cmd.CommandType = System.Data.CommandType.Text;
                                         cmd.Connection = conn;
@@ -227,6 +260,8 @@ namespace VISION.FINANS.MUHASEBE_AKTARIMI_MANUEL.ALIM
                     doPrhInvoice.DataFields.FieldByName("DOC_NUMBER").Value = doPrhINVOICEHDR["DOC_NUMBER"];
                     doPrhInvoice.DataFields.FieldByName("ARP_CODE").Value = doPrhINVOICEHDR["ARP_CODE"];
                     doPrhInvoice.DataFields.FieldByName("GL_CODE").Value = doPrhINVOICEHDR["GL_CODE"];
+                    doPrhInvoice.DataFields.FieldByName("POST_FLAGS").Value = 246;
+                    doPrhInvoice.DataFields.FieldByName("TRADING_GRP").Value = "KDV02";
                     doPrhInvoice.DataFields.FieldByName("VAT_RATE").Value = doPrhINVOICEHDR["VAT_RATE"];
                     doPrhInvoice.DataFields.FieldByName("ADD_DISCOUNTS").Value = doPrhINVOICEHDR["ADD_DISCOUNTS"];
                     doPrhInvoice.DataFields.FieldByName("TOTAL_DISCOUNTS").Value = doPrhINVOICEHDR["TOTAL_DISCOUNTS"];
@@ -237,7 +272,6 @@ namespace VISION.FINANS.MUHASEBE_AKTARIMI_MANUEL.ALIM
                     doPrhInvoice.DataFields.FieldByName("NOTES2").Value = doPrhINVOICEHDR["NOTES2"];
                     doPrhInvoice.DataFields.FieldByName("NOTES3").Value = doPrhINVOICEHDR["NOTES3"];
                     doPrhInvoice.DataFields.FieldByName("NOTES4").Value = doPrhINVOICEHDR["NOTES4"];
-
                     doPrhInvoice.DataFields.FieldByName("TC_XRATE").Value = doPrhINVOICEHDR["TC_XRATE"];
                     doPrhInvoice.DataFields.FieldByName("RC_NET").Value = doPrhINVOICEHDR["RC_NET"];
                     doPrhInvoice.DataFields.FieldByName("RC_XRATE").Value = doPrhINVOICEHDR["RC_XRATE"];
@@ -259,6 +293,8 @@ namespace VISION.FINANS.MUHASEBE_AKTARIMI_MANUEL.ALIM
                         doPrhInvoice.DataFields.FieldByName("CURR_INVOICE").Value = 0;
                     }
 
+                    if (GELEN_FATURA_TURU == "Stopaj") doPrhInvoice.DataFields.FieldByName("TRADING_GRP").Value = "KDV02";
+
                     doPrhInvoice.DataFields.FieldByName("DATA_REFERENCE").Value = "~";
 
                     string mySelectQueryLine = "  SELECT  *  FROM     dbo.FTR_LG_STLINE  where  SIRKET_KODU=@SIRKET_KODU AND  INVOICE_REF=@INVOICE_REF ";
@@ -274,6 +310,8 @@ namespace VISION.FINANS.MUHASEBE_AKTARIMI_MANUEL.ALIM
                     SqlDataReader doPrhINVOICELine = myCommandSubLine.ExecuteReader(CommandBehavior.CloseConnection);
                     doPrhInvoiceLines = doPrhInvoice.DataFields.FieldByName("TRANSACTIONS").Lines;
                     int ODEMEVADESI = 0;
+                    string doPrhINVOICELine_MASTER_CODE = "";
+                    double STOPAJ_TOTAL = 0;
                     while (doPrhINVOICELine.Read())
                     {
                         if (doPrhInvoiceLines.AppendLine())
@@ -282,58 +320,92 @@ namespace VISION.FINANS.MUHASEBE_AKTARIMI_MANUEL.ALIM
                             int STOPAJ_ROW = 0;
                             string doPrhINVOICELine_Control = "0";
 
-                            if (doPrhINVOICELine["TYPE"].ToString() == "-1")
-                            { doPrhINVOICELine_Control = "0"; STOPAJ_ROW = 1; }
-                            else
-                            { doPrhINVOICELine_Control = doPrhINVOICELine["TYPE"].ToString(); STOPAJ_ROW = 0; }
+                            doPrhINVOICELine_Control = doPrhINVOICELine["TYPE"].ToString();
+                            if (doPrhINVOICELine["DESCRIPTION"].ToString() == "Stopaj" && doPrhINVOICELine["DETAIL_LEVEL"].ToString() == "0" && doPrhINVOICELine["DISCOUNT_RATE"].ToString() == "0") STOPAJ_ROW = 1;
 
                             if (doPrhINVOICELine_Control == "0")
-                            { 
-                                string _CreateItems = utl.createItemCode(doPrhINVOICELine["MASTER_CODE"].ToString(), doPrhINVOICELine["NAME"].ToString(),  _GLOBAL_PARAMETERS._SIRKET_NO, "ADET", doPrhINVOICELine["VAT_RATE"].ToString(), doPrhINVOICEHDR["CODE"].ToString(), doPrhINVOICEHDR["TITLE"].ToString(),DATE_.Year.ToString(), STOPAJ_ROW.ToString() ).ToString();
+                            {
+                                doPrhINVOICELine_MASTER_CODE = doPrhINVOICELine["MASTER_CODE"].ToString();
+                                string _CreateItems = utl.createItemCode(doPrhINVOICELine["MASTER_CODE"].ToString(), doPrhINVOICELine["NAME"].ToString(), _GLOBAL_PARAMETERS._SIRKET_NO, "ADET", doPrhINVOICELine["VAT_RATE"].ToString(), doPrhINVOICEHDR["CODE"].ToString(), doPrhINVOICEHDR["TITLE"].ToString(), DATE_.Year.ToString(), STOPAJ_ROW.ToString()).ToString();
                                 doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("TYPE").Value = doPrhINVOICELine_Control;
                                 doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("MASTER_CODE").Value = _CreateItems;
                                 string[] OitemCode = _CreateItems.Split('-');
                                 if (OitemCode[0].ToString() == ",") return rReturn = OitemCode[1].ToString();
-
-
                                 int MecraType = Convert.ToInt32(OitemCode[0]);
                                 if (MecraType >= 15)
-                                { 
+                                {
                                     string ITEM_CODE = OitemCode[0].Substring(0, 2);
-                                    string ITEM_TYPE = OitemCode[0].Substring(2, OitemCode[0].Length - 2);  
-                                    using (SqlConnection myConnection = new SqlConnection(_GLOBAL_PARAMETERS._CONNECTIONSTRING_MDB.ToString()))
+                                    string ITEM_TYPE = OitemCode[0].Substring(2, OitemCode[0].Length - 2);
+                                    if (STOPAJ_ROW == 0)
                                     {
-                                        string SQL = " SELECT * from dbo.FTR_INTERNET_KATEGORI_LISTESI WHERE YIL='" + DATE_.Year + "'";
-                                        SqlCommand myCommand = new SqlCommand(SQL, myConnection);
-                                        myCommand.CommandText = SQL.ToString();
-                                        myConnection.Open();
-                                        SqlDataReader myReader = myCommand.ExecuteReader(CommandBehavior.CloseConnection);
-                                        while (myReader.Read())
+                                        using (SqlConnection myConnection = new SqlConnection(_GLOBAL_PARAMETERS._CONNECTIONSTRING_MDB.ToString()))
                                         {
-                                            if (Convert.ToInt32(ITEM_TYPE) >= Convert.ToInt32(myReader["MUHASEBE_KODU_BAS"].ToString()) && Convert.ToInt32(ITEM_TYPE) <= Convert.ToInt32(myReader["MUHASEBE_KODU_BIT"].ToString()))
+                                            string SQL = " SELECT * from dbo.FTR_INTERNET_KATEGORI_LISTESI WHERE YIL='" + DATE_.Year + "'";
+                                            SqlCommand myCommand = new SqlCommand(SQL, myConnection);
+                                            myCommand.CommandText = SQL.ToString();
+                                            myConnection.Open();
+                                            SqlDataReader myReader = myCommand.ExecuteReader(CommandBehavior.CloseConnection);
+                                            while (myReader.Read())
                                             {
-                                                ITEM_CODE = myReader["TRANSFER_KODU"].ToString();
-                                                break;
+                                                if (Convert.ToInt32(ITEM_TYPE) >= Convert.ToInt32(myReader["MUHASEBE_KODU_BAS"].ToString()) && Convert.ToInt32(ITEM_TYPE) <= Convert.ToInt32(myReader["MUHASEBE_KODU_BIT"].ToString()))
+                                                {
+                                                    ITEM_CODE = myReader["TRANSFER_KODU"].ToString();
+                                                    break;
+                                                }
                                             }
+                                            myReader.Close();
+                                            myCommand.Connection.Close();
                                         }
-                                        myReader.Close();
-                                        myCommand.Connection.Close();
                                     }
                                     if (DATE_.Year.ToString() == "2019") ITEM_TYPE = ITEM_TYPE.Substring(1, ITEM_TYPE.Length - 1);
 
                                     if (ITEM_TYPE.Length < 3) ITEM_TYPE = "0" + ITEM_TYPE;
-                                    if (ITEM_TYPE.Length < 3) ITEM_TYPE = "0" + ITEM_TYPE; 
+                                    if (ITEM_TYPE.Length < 3) ITEM_TYPE = "0" + ITEM_TYPE;
 
-                                    doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE1").Value = "740." + ITEM_CODE + "." + ITEM_TYPE + "." + OitemCode[2];
+
+                                    if (STOPAJ_ROW == 0)
+                                    {
+                                        doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE1").Value = "740." + ITEM_CODE + "." + ITEM_TYPE + "." + OitemCode[2];
+                                    }
+                                    else
+                                    {
+
+                                        doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE1").Value = "740.50.001." + OitemCode[2];
+                                    }
                                 }
                                 else
                                 {
                                     doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE1").Value = "740.0" + OitemCode[0] + ".001." + OitemCode[2];
-                                } 
-                               
+                                }
+
                                 if (doPrhINVOICEHDR["TYPE"].ToString() == "1")
                                 {
-                                    doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE2").Value = "191.01.001.0001";
+                                    if (MecraType >= 15)
+                                    {
+                                        switch (FIRMA_KODU)
+                                        {
+
+                                            case "329":
+                                                
+                                               if(GELEN_FATURA_TURU == "Stopaj") doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE2").Value = "191.01.001.0008"; else doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE2").Value = "191.01.001.0001";
+                                                break;
+                                            case "519":
+                                                if (GELEN_FATURA_TURU == "Stopaj") doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE2").Value = "191.01.001.0001"; else doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE2").Value = "191.01.001.0001";
+                                                break;
+                                            case "619":
+                                                if (GELEN_FATURA_TURU == "Stopaj") doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE2").Value = "191.01.001.0004"; else doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE2").Value = "191.01.001.0001";
+                                                break;
+
+                                            default:
+                                                if (GELEN_FATURA_TURU == "Stopaj") doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE2").Value = "191.01.001.0006"; else doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE2").Value = "191.01.001.0001";
+                                                break;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE2").Value = "191.01.001.0001";
+
+                                    }
                                 }
                                 if (doPrhINVOICEHDR["TYPE"].ToString() == "6")
                                 {
@@ -344,74 +416,159 @@ namespace VISION.FINANS.MUHASEBE_AKTARIMI_MANUEL.ALIM
                             {
                                 // dg.Rows(i).Cells("CODE").Value.ToString, dg.Rows(i).Cells("DEFINITION").Value.ToString
                                 doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("TYPE").Value = doPrhINVOICELine_Control;
-                                string _CreateItems = utl.createItemCode(doPrhINVOICELine["MASTER_CODE"].ToString(), doPrhINVOICELine["NAME"].ToString(),  _GLOBAL_PARAMETERS._SIRKET_NO, "ADET", doPrhINVOICELine["VAT_RATE"].ToString(), doPrhINVOICEHDR["CODE"].ToString(), doPrhINVOICEHDR["TITLE"].ToString(), DATE_.Year.ToString(), STOPAJ_ROW.ToString()).ToString();
+                                string _CreateItems = utl.createItemCode(doPrhINVOICELine["MASTER_CODE"].ToString(), doPrhINVOICELine["NAME"].ToString(), _GLOBAL_PARAMETERS._SIRKET_NO, "ADET", doPrhINVOICELine["VAT_RATE"].ToString(), doPrhINVOICEHDR["CODE"].ToString(), doPrhINVOICEHDR["TITLE"].ToString(), DATE_.Year.ToString(), STOPAJ_ROW.ToString()).ToString();
                                 //string _CreateItems = utl.createItemCode( _GLOBAL_PARAMETERS._SIRKET_NO,doPrhINVOICELine["MASTER_CODE"].ToString(), doPrhINVOICELine["VAT_RATE"].ToString(), doPrhINVOICELine["TYPE"].ToString(), doPrhINVOICELine["NAME"].ToString()).ToString();
 
                                 //string _CreateItems = utl.createItemCode( _GLOBAL_PARAMETERS._SIRKET_NO, dg.Rows(i).Cells(j + 1).Value.ToString, dg.Rows(i).Cells(j + 2).Value.ToString, sfirm, dg.Rows(i).Cells(j + 5).Value.ToString, CDbl(dg.Rows(i).Cells(j + 6).Value.ToString), dg.Rows(i).Cells("CODE").Value.ToString, dg.Rows(i).Cells("DEFINITION").Value.ToString);
 
                                 string[] OitemCode = _CreateItems.Split('-');
-                                string _CreateSalesServiceCards = utl.createSalesServiceCards( _GLOBAL_PARAMETERS._SIRKET_NO, doPrhINVOICELine["AUXIL_CODE"].ToString(), doPrhINVOICELine["DESCRIPTION"].ToString(), doPrhINVOICELine["MASTER_CODE"].ToString(), doPrhINVOICELine["UNIT_CODE"].ToString(), doPrhINVOICELine["VAT_RATE"].ToString(), doPrhINVOICELine_Control).ToString();
-                                string _CreateGlCards = utl.CreateGlCard( _GLOBAL_PARAMETERS._SIRKET_NO, doPrhINVOICELine["MASTER_CODE"].ToString(), doPrhINVOICELine["TITLE"].ToString()).ToString();
+                                string _CreateSalesServiceCards = utl.createSalesServiceCards(_GLOBAL_PARAMETERS._SIRKET_NO, doPrhINVOICELine["AUXIL_CODE"].ToString(), doPrhINVOICELine["DESCRIPTION"].ToString(), doPrhINVOICELine["MASTER_CODE"].ToString(), doPrhINVOICELine["UNIT_CODE"].ToString(), doPrhINVOICELine["VAT_RATE"].ToString(), doPrhINVOICELine_Control).ToString();
+                                string _CreateGlCards = utl.CreateGlCard(_GLOBAL_PARAMETERS._SIRKET_NO, doPrhINVOICELine["MASTER_CODE"].ToString(), doPrhINVOICELine["TITLE"].ToString()).ToString();
                                 doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("MASTER_CODE").Value = doPrhINVOICELine["MASTER_CODE"];
-                                  
+
                                 int MecraType = Convert.ToInt32(OitemCode[0]);
                                 if (MecraType >= 15)
-                                { 
+                                {
                                     string ITEM_CODE = OitemCode[0].Substring(0, 2);
-                                    string ITEM_TYPE = OitemCode[0].Substring(2, OitemCode[0].Length - 2);  
-                                    using (SqlConnection myConnection = new SqlConnection(_GLOBAL_PARAMETERS._CONNECTIONSTRING_MDB.ToString()))
+                                    string ITEM_TYPE = OitemCode[0].Substring(2, OitemCode[0].Length - 2);
+                                    if (STOPAJ_ROW == 0)
                                     {
-                                        string SQL = " SELECT * from dbo.FTR_INTERNET_KATEGORI_LISTESI WHERE YIL='" + DATE_.Year + "'";
-                                        SqlCommand myCommand = new SqlCommand(SQL, myConnection);
-                                        myCommand.CommandText = SQL.ToString();
-                                        myConnection.Open();
-                                        SqlDataReader myReader = myCommand.ExecuteReader(CommandBehavior.CloseConnection);
-                                        while (myReader.Read())
+                                        using (SqlConnection myConnection = new SqlConnection(_GLOBAL_PARAMETERS._CONNECTIONSTRING_MDB.ToString()))
                                         {
-                                            if (Convert.ToInt32(ITEM_TYPE) >= Convert.ToInt32(myReader["MUHASEBE_KODU_BAS"].ToString()) && Convert.ToInt32(ITEM_TYPE) <= Convert.ToInt32(myReader["MUHASEBE_KODU_BIT"].ToString()))
+                                            string SQL = " SELECT * from dbo.FTR_INTERNET_KATEGORI_LISTESI WHERE YIL='" + DATE_.Year + "'";
+                                            SqlCommand myCommand = new SqlCommand(SQL, myConnection);
+                                            myCommand.CommandText = SQL.ToString();
+                                            myConnection.Open();
+                                            SqlDataReader myReader = myCommand.ExecuteReader(CommandBehavior.CloseConnection);
+                                            while (myReader.Read())
                                             {
-                                                ITEM_CODE = myReader["TRANSFER_KODU"].ToString();
-                                                break;
+                                                if (Convert.ToInt32(ITEM_TYPE) >= Convert.ToInt32(myReader["MUHASEBE_KODU_BAS"].ToString()) && Convert.ToInt32(ITEM_TYPE) <= Convert.ToInt32(myReader["MUHASEBE_KODU_BIT"].ToString()))
+                                                {
+                                                    ITEM_CODE = myReader["TRANSFER_KODU"].ToString();
+                                                    break;
+                                                }
                                             }
+                                            myReader.Close();
+                                            myCommand.Connection.Close();
                                         }
-                                        myReader.Close();
-                                        myCommand.Connection.Close();
                                     }
                                     if (DATE_.Year.ToString() == "2019") ITEM_TYPE = ITEM_TYPE.Substring(1, ITEM_TYPE.Length - 1);
 
                                     if (ITEM_TYPE.Length < 3) ITEM_TYPE = "0" + ITEM_TYPE;
-                                    if (ITEM_TYPE.Length < 3) ITEM_TYPE = "0" + ITEM_TYPE; 
+                                    if (ITEM_TYPE.Length < 3) ITEM_TYPE = "0" + ITEM_TYPE;
 
-                                    doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE1").Value = "740." + ITEM_CODE + "." + ITEM_TYPE + "." + OitemCode[2];
+                                    //   doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE1").Value = "740." + ITEM_CODE + "." + ITEM_TYPE + "." + OitemCode[2];
+
+
+                                    if (STOPAJ_ROW == 0)
+                                    {
+                                        doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE1").Value = "740." + ITEM_CODE + "." + ITEM_TYPE + "." + OitemCode[2];
+                                    }
+                                    else
+                                    {
+                                        doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE1").Value = "740.50.001." + OitemCode[2];
+                                    } 
                                 }
                                 else
                                 {
                                     doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE1").Value = "740.0" + OitemCode[0] + ".001." + OitemCode[2];
-                                }  
-                               
+                                }
+
                                 if (doPrhINVOICEHDR["TYPE"].ToString() == "1")
                                 {
-                                    doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE2").Value = "191.01.001.0001";
+
+                                    if (MecraType >= 15)
+                                    {
+                                        switch (FIRMA_KODU)
+                                        {
+
+                                            case "329":
+                                                if (GELEN_FATURA_TURU == "Stopaj") doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE2").Value = "191.01.001.0008"; else doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE2").Value = "191.01.001.0001";
+                                                break;
+                                            case "519":
+                                                if (GELEN_FATURA_TURU == "Stopaj") doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE2").Value = "191.01.001.0001"; else doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE2").Value = "191.01.001.0001";
+                                                break;
+                                            case "619":
+                                                if (GELEN_FATURA_TURU == "Stopaj") doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE2").Value = "191.01.001.0004"; else doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE2").Value = "191.01.001.0001";
+                                                break;
+
+                                            default:
+                                                if (GELEN_FATURA_TURU == "Stopaj") doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE2").Value = "191.01.001.0006"; else doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE2").Value = "191.01.001.0001";
+                                                break;
+                                        }
+                                    }
+                                    else
+                                    { doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE2").Value = "191.01.001.0001"; }
                                 }
                                 if (doPrhINVOICEHDR["TYPE"].ToString() == "6")
                                 {
                                     doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE2").Value = "391.02.001.0001";
                                 }
                             }
-                            doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("AUXIL_CODE").Value = doPrhINVOICELine["AUXIL_CODE"];
-                            doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("QUANTITY").Value = doPrhINVOICELine["QUANTITY"];
-                            doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("PRICE").Value = doPrhINVOICELine["PRICE"];
-                            doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("TOTAL").Value = doPrhINVOICELine["TOTAL"];
-                            doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("EDT_PRICE").Value = doPrhINVOICELine["EDT_PRICE"];
-                            doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("UNIT_CODE").Value = doPrhINVOICELine["UNIT_CODE"];
-                            doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("UNIT_CONV1").Value = doPrhINVOICELine["UNIT_CONV1"];
-                            doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("UNIT_CONV2").Value = doPrhINVOICELine["UNIT_CONV2"];
-                            doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("VAT_RATE").Value = doPrhINVOICELine["VAT_RATE"];
-                            doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("VAT_AMOUNT").Value = doPrhINVOICELine["VAT_AMOUNT"];
-                            doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("DESCRIPTION").Value = doPrhINVOICELine["DESCRIPTION"];
-                            doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("PC_PRICE").Value = doPrhINVOICELine["EDT_PRICE"];
-                            doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("CURR_TRANSACTION").Value = doPrhINVOICEHDR["CURR_INVOICE"];
-                            doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("TC_XRATE").Value = doPrhINVOICELine["TC_XRATE"]; 
+
+
+                            if (doPrhINVOICELine_Control == "2")
+                            {
+                                if (doPrhINVOICELine["DETAIL_LEVEL"].ToString() == "0" && doPrhINVOICELine["DISCOUNT_RATE"].ToString() == "100" && doPrhINVOICELine["DISCEXP_CALC"].ToString() == "0") STOPAJ_ROW = 1;
+                                if (doPrhINVOICELine["DETAIL_LEVEL"].ToString() == "0" && doPrhINVOICELine["DISCOUNT_RATE"].ToString() == "15" && doPrhINVOICELine["DISCEXP_CALC"].ToString() == "0") STOPAJ_ROW = 1;
+                                if (doPrhINVOICELine["DETAIL_LEVEL"].ToString() == "1" && doPrhINVOICELine["DISCOUNT_RATE"].ToString() == "0" && doPrhINVOICELine["DISCEXP_CALC"].ToString() == "1") STOPAJ_ROW = 3;
+
+                                doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("TYPE").Value = doPrhINVOICELine_Control;
+
+
+                            if (STOPAJ_ROW == 1) STOPAJ_TOTAL += Convert.ToDouble(doPrhINVOICELine["TOTAL"]);
+
+
+
+                                //if (STOPAJ_ROW == 1)
+                                //{ 
+                                //    doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE1").Value = "360.03.001.0011";
+                                //    doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("DISCEXP_CALC").Value = doPrhINVOICELine["DISCEXP_CALC"];
+                                //    doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("QUANTITY").Value = doPrhINVOICELine["QUANTITY"];
+                                //    doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("TOTAL").Value = doPrhINVOICELine["TOTAL"];
+                                //    doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("TOTAL_NET").Value = doPrhINVOICELine["TOTAL_NET"];
+                                //    doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("DISCOUNT_RATE").Value = doPrhINVOICELine["DISCOUNT_RATE"];
+                                //}
+                                //if (STOPAJ_ROW == 2)
+                                //{
+                                //    doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE1").Value = "360.03.001.0011";
+                                //    doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("DISCEXP_CALC").Value = doPrhINVOICELine["DISCEXP_CALC"];
+                                //    doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("QUANTITY").Value = doPrhINVOICELine["QUANTITY"];
+                                //    doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("TOTAL").Value = doPrhINVOICELine["TOTAL"];
+                                //    doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("TOTAL_NET").Value = doPrhINVOICELine["TOTAL_NET"];
+                                //    doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("DISCOUNT_RATE").Value = doPrhINVOICELine["DISCOUNT_RATE"];
+                                //}
+
+                                if (STOPAJ_ROW == 3)
+                                {
+                                    doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE1").Value = "360.02.001.0002";
+                                    doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("DETAIL_LEVEL").Value = 1;
+                                    doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("DISCEXP_CALC").Value = doPrhINVOICELine["DISCEXP_CALC"];
+                                    doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("TOTAL").Value = doPrhINVOICELine["TOTAL"];
+                                    doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("TOTAL_NET").Value = doPrhINVOICELine["TOTAL_NET"];
+                                }
+
+                            }
+
+                            if (doPrhINVOICELine_Control != "2")
+                            {
+                                doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("AUXIL_CODE").Value = doPrhINVOICELine["AUXIL_CODE"];
+                                doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("QUANTITY").Value = doPrhINVOICELine["QUANTITY"];
+                                doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("PRICE").Value = doPrhINVOICELine["PRICE"];
+                                doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("TOTAL").Value = doPrhINVOICELine["TOTAL"];
+                                doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("EDT_PRICE").Value = doPrhINVOICELine["EDT_PRICE"];
+                                doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("UNIT_CODE").Value = doPrhINVOICELine["UNIT_CODE"];
+                                doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("UNIT_CONV1").Value = doPrhINVOICELine["UNIT_CONV1"];
+                                doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("UNIT_CONV2").Value = doPrhINVOICELine["UNIT_CONV2"];
+                                doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("VAT_RATE").Value = doPrhINVOICELine["VAT_RATE"];
+                                doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("VAT_AMOUNT").Value = doPrhINVOICELine["VAT_AMOUNT"];
+                                doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("DESCRIPTION").Value = doPrhINVOICELine["DESCRIPTION"];
+                                doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("PC_PRICE").Value = doPrhINVOICELine["EDT_PRICE"];
+                                doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("CURR_TRANSACTION").Value = doPrhINVOICEHDR["CURR_INVOICE"];
+                                doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("TC_XRATE").Value = doPrhINVOICELine["TC_XRATE"];
+                            }
+
+
                             if (doPrhINVOICELine["CURR_PRICE"].ToString() == "" || doPrhINVOICELine["CURR_PRICE"] == DBNull.Value)
                             {
 
@@ -425,7 +582,7 @@ namespace VISION.FINANS.MUHASEBE_AKTARIMI_MANUEL.ALIM
                                     doPrhInvoice.DataFields.FieldByName("TC_NET").Value = 0;
                                     doPrhInvoice.DataFields.FieldByName("CURR_INVOICE").Value = 0;
                                 }
-                            } 
+                            }
 
                             // BU ALANLARA BAK 
 
@@ -437,6 +594,22 @@ namespace VISION.FINANS.MUHASEBE_AKTARIMI_MANUEL.ALIM
                         }
                     }
 
+
+                    //// stopaj genel indirim
+                    if (STOPAJ_TOTAL > 0)
+                    {
+                        if (doPrhInvoiceLines.AppendLine())
+                        {
+                            doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("TYPE").Value =2;
+                            doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("GL_CODE1").Value = "360.03.001.0011";
+                            doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("DETAIL_LEVEL").Value = 1;
+                            doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("DISCEXP_CALC").Value = 1;
+                            doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("QUANTITY").Value = 0;
+                            doPrhInvoiceLines[doPrhInvoiceLines.Count - 1].FieldByName("TOTAL").Value = STOPAJ_TOTAL;
+                        }
+                    }
+
+                    doPrhInvoice.ExportToXML("", "C:\\temp\\FATURA.XML");
                     if (doPrhInvoice.Post())
                     {
 

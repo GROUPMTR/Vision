@@ -685,21 +685,21 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManagers;
-            this.barDockControlTop.Size = new System.Drawing.Size(1554, 31);
+            this.barDockControlTop.Size = new System.Drawing.Size(1554, 29);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 780);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 778);
             this.barDockControlBottom.Manager = this.barManagers;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1554, 25);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1554, 27);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 31);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 29);
             this.barDockControlLeft.Manager = this.barManagers;
             this.barDockControlLeft.Size = new System.Drawing.Size(0, 749);
             // 
@@ -707,7 +707,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1554, 31);
+            this.barDockControlRight.Location = new System.Drawing.Point(1554, 29);
             this.barDockControlRight.Manager = this.barManagers;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 749);
             // 
@@ -732,12 +732,12 @@
             // 
             // hideContainerLeft
             // 
-            this.hideContainerLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.hideContainerLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(221)))), ((int)(((byte)(238)))));
             this.hideContainerLeft.Controls.Add(this.DC_ONAYLAMA_LISTESI);
             this.hideContainerLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.hideContainerLeft.Location = new System.Drawing.Point(0, 31);
+            this.hideContainerLeft.Location = new System.Drawing.Point(0, 29);
             this.hideContainerLeft.Name = "hideContainerLeft";
-            this.hideContainerLeft.Size = new System.Drawing.Size(19, 749);
+            this.hideContainerLeft.Size = new System.Drawing.Size(23, 749);
             // 
             // DC_ONAYLAMA_LISTESI
             // 
@@ -774,7 +774,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(307, 398);
+            this.groupControl1.Size = new System.Drawing.Size(307, 397);
             this.groupControl1.TabIndex = 8;
             this.groupControl1.Text = "GİB DURUM BİLGİLENDİRME";
             // 
@@ -782,10 +782,10 @@
             // 
             this.gridCntrl_DURUM_BILGISI.Cursor = System.Windows.Forms.Cursors.Default;
             this.gridCntrl_DURUM_BILGISI.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridCntrl_DURUM_BILGISI.Location = new System.Drawing.Point(2, 20);
+            this.gridCntrl_DURUM_BILGISI.Location = new System.Drawing.Point(2, 21);
             this.gridCntrl_DURUM_BILGISI.MainView = this.gridView3;
             this.gridCntrl_DURUM_BILGISI.Name = "gridCntrl_DURUM_BILGISI";
-            this.gridCntrl_DURUM_BILGISI.Size = new System.Drawing.Size(303, 376);
+            this.gridCntrl_DURUM_BILGISI.Size = new System.Drawing.Size(303, 374);
             this.gridCntrl_DURUM_BILGISI.TabIndex = 1;
             this.gridCntrl_DURUM_BILGISI.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -843,9 +843,9 @@
             // splitterControl2
             // 
             this.splitterControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitterControl2.Location = new System.Drawing.Point(0, 398);
+            this.splitterControl2.Location = new System.Drawing.Point(0, 397);
             this.splitterControl2.Name = "splitterControl2";
-            this.splitterControl2.Size = new System.Drawing.Size(307, 5);
+            this.splitterControl2.Size = new System.Drawing.Size(307, 6);
             this.splitterControl2.TabIndex = 7;
             this.splitterControl2.TabStop = false;
             // 
@@ -863,10 +863,10 @@
             // 
             this.gridCntrl_ONAYLIST.Cursor = System.Windows.Forms.Cursors.Default;
             this.gridCntrl_ONAYLIST.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridCntrl_ONAYLIST.Location = new System.Drawing.Point(2, 20);
+            this.gridCntrl_ONAYLIST.Location = new System.Drawing.Point(2, 21);
             this.gridCntrl_ONAYLIST.MainView = this.gridView1;
             this.gridCntrl_ONAYLIST.Name = "gridCntrl_ONAYLIST";
-            this.gridCntrl_ONAYLIST.Size = new System.Drawing.Size(303, 295);
+            this.gridCntrl_ONAYLIST.Size = new System.Drawing.Size(303, 294);
             this.gridCntrl_ONAYLIST.TabIndex = 0;
             this.gridCntrl_ONAYLIST.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -926,19 +926,19 @@
             this.DC_FATURA_ON_IZLEME.Controls.Add(this.dockPanel1_Container);
             this.DC_FATURA_ON_IZLEME.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
             this.DC_FATURA_ON_IZLEME.ID = new System.Guid("10c0f6db-4ece-44c4-90fa-a4cb4802fe19");
-            this.DC_FATURA_ON_IZLEME.Location = new System.Drawing.Point(1088, 55);
+            this.DC_FATURA_ON_IZLEME.Location = new System.Drawing.Point(1088, 29);
             this.DC_FATURA_ON_IZLEME.Name = "DC_FATURA_ON_IZLEME";
             this.DC_FATURA_ON_IZLEME.Options.ShowCloseButton = false;
             this.DC_FATURA_ON_IZLEME.OriginalSize = new System.Drawing.Size(466, 200);
-            this.DC_FATURA_ON_IZLEME.Size = new System.Drawing.Size(466, 725);
+            this.DC_FATURA_ON_IZLEME.Size = new System.Drawing.Size(466, 749);
             this.DC_FATURA_ON_IZLEME.Text = "Fatura Ön İzleme";
             // 
             // dockPanel1_Container
             // 
             this.dockPanel1_Container.Controls.Add(this.pnlControl_INVVIEW);
-            this.dockPanel1_Container.Location = new System.Drawing.Point(5, 23);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(5, 25);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(457, 698);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(457, 720);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // pnlControl_INVVIEW
@@ -946,7 +946,7 @@
             this.pnlControl_INVVIEW.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlControl_INVVIEW.Location = new System.Drawing.Point(0, 0);
             this.pnlControl_INVVIEW.Name = "pnlControl_INVVIEW";
-            this.pnlControl_INVVIEW.Size = new System.Drawing.Size(457, 698);
+            this.pnlControl_INVVIEW.Size = new System.Drawing.Size(457, 720);
             this.pnlControl_INVVIEW.TabIndex = 1;
             // 
             // BTN_KAPAT
@@ -1372,7 +1372,7 @@
             this.gridCntrl_LISTS.ContextMenuStrip = this.cnt_MENU;
             this.gridCntrl_LISTS.Cursor = System.Windows.Forms.Cursors.Default;
             this.gridCntrl_LISTS.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridCntrl_LISTS.Location = new System.Drawing.Point(19, 31);
+            this.gridCntrl_LISTS.Location = new System.Drawing.Point(23, 29);
             this.gridCntrl_LISTS.LookAndFeel.SkinName = "VS2010";
             this.gridCntrl_LISTS.MainView = this.gridView_MASTERS;
             this.gridCntrl_LISTS.Name = "gridCntrl_LISTS";
@@ -1383,7 +1383,7 @@
             this.re_TEST,
             this.re_FATURA_DURUMU,
             this.re_YENI});
-            this.gridCntrl_LISTS.Size = new System.Drawing.Size(1069, 635);
+            this.gridCntrl_LISTS.Size = new System.Drawing.Size(1065, 634);
             this.gridCntrl_LISTS.TabIndex = 35;
             this.gridCntrl_LISTS.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_MASTERS});
@@ -1400,7 +1400,7 @@
             this.CNT_MENU_YAZDIRMA,
             this.CNT_MENU_CIKART});
             this.cnt_MENU.Name = "cnt_MENU";
-            this.cnt_MENU.Size = new System.Drawing.Size(232, 126);
+            this.cnt_MENU.Size = new System.Drawing.Size(232, 104);
             // 
             // CNT_MENU_ONAYA_GONDER
             // 
@@ -1829,21 +1829,21 @@
             // splitterControl1
             // 
             this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitterControl1.Location = new System.Drawing.Point(19, 666);
+            this.splitterControl1.Location = new System.Drawing.Point(23, 663);
             this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(1069, 5);
+            this.splitterControl1.Size = new System.Drawing.Size(1065, 6);
             this.splitterControl1.TabIndex = 40;
             this.splitterControl1.TabStop = false;
             // 
             // gridCntrl_LINE
             // 
             this.gridCntrl_LINE.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gridCntrl_LINE.Location = new System.Drawing.Point(19, 671);
+            this.gridCntrl_LINE.Location = new System.Drawing.Point(23, 669);
             this.gridCntrl_LINE.MainView = this.gridView2;
             this.gridCntrl_LINE.Name = "gridCntrl_LINE";
             this.gridCntrl_LINE.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.re_SATIR_ACIKLAMASI});
-            this.gridCntrl_LINE.Size = new System.Drawing.Size(1069, 109);
+            this.gridCntrl_LINE.Size = new System.Drawing.Size(1065, 109);
             this.gridCntrl_LINE.TabIndex = 41;
             this.gridCntrl_LINE.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});

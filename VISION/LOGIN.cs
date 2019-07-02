@@ -439,7 +439,8 @@ namespace VISION
                     SqlDataReader sqlreaders = myCommands.ExecuteReader();                
                     while (sqlreaders.Read())
                     {
-                        gridLook_FIRMA_DONEMI.EditValue = sqlreaders["LOGIN_NAME"]; 
+                        gridLook_FIRMA_DONEMI.EditValue = sqlreaders["LOGIN_NAME"];
+                        _GLOBAL_PARAMETERS._SIRKET_KODU = sqlreaders["SIRKET_KODU"].ToString();
                         _GLOBAL_PARAMETERS._SIRKET_NO = sqlreaders["SIRKET_NO"].ToString(); 
                     }
                     sqlreaders.Close ();

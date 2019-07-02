@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<style type="text/css">
+body {
+background-color: #edeaea;
+}
+</style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <style type="text/css">
+a:link {color:rgb(0, 112, 192);text-decoration:none;}
+a:visited {color:rgb(0, 112, 192);text-decoration:none;}
+a:hover {color:rgb(0, 112, 192);text-decoration:underline;}
+a:active {color:rgb(0, 112, 192);text-decoration:none;}
+      .auto-style1 {
+          width: 103px;
+      }
+      .auto-style2 {
+          width: 328px;
+      }
+      .auto-style3 {
+          width: 103px;
+          font-weight: bold;
+      }
+      .auto-style4 {
+          width: 15px;
+          font-weight: bold;
+      }
+      .auto-style5 {
+          width: 15px;
+      }
+  </style>
+  <title>Bütçe Onay Formuw</title>
+</head>
+<body style="background-color: rgb(237, 234, 234);">
+<table style="width: 100%; height:700px;"
+ class="email-body-wrapper" border="0" cellpadding="0"
+ cellspacing="0">
+  <tbody>
+    <tr>
+      <td>
+          <span class="remove-absolute">
+            <table style="width: 684px; height: 689px;" align="center" border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                      <tr>
+                        <td
+ style="background-color: rgb(255, 255, 255);" align="center"
+ bgcolor="#ffffff" height="80" width="680">
+                        <table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="680">
+                          <tbody>
+                            <tr>
+                              <td style="padding-right: 20px; padding-left: 10px;" bgcolor="#e47e02" width="450"> <p align="center">&nbsp;</p>
+                                <p align="center"><span style="font-size: 30px; font-family: Arial,Helvetica,sans-serif; color: rgb(255, 255, 255);"><strong>BÜTÇE
+ONAY FORMU </strong></span><br> <span style="font-size: 24px; font-family: Arial,Helvetica,sans-serif; color: rgb(255, 255, 255);"><small><small>Lütfen
+Bilgileri kontrol edip onaylatınız.</small></small><br>
+                              </span></p>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td
+ style="background-color: rgb(255, 255, 255);" bgcolor="#ffffff" valign="middle">
+                            <span class="remove-absolute">
+                              <table style="text-align: left; width: 518px; height: 381px;" border="0" cellpadding="2" cellspacing="2">
+                                <tbody>
+                                  <tr>
+                                    <td   class="auto-style4">&nbsp;</td>
+                                    <td   class="auto-style3"><span style="font-size: 9pt; font-family: &quot;Helvetica&quot;,sans-serif; color: rgb(127, 127, 127);">Kampanya
+Kodu:</span></td>
+                                    <td   class="auto-style2">KAMPANYA_KODU</td></tr>
+                                  <tr>
+                                    <td   class="auto-style4">&nbsp;</td>
+                                    <td   class="auto-style3"><span style="font-size: 9pt; font-family: &quot;Helvetica&quot;,sans-serif; color: rgb(127, 127, 127);">Plan
+Kodu:</span></td>
+                                    <td   class="auto-style2">PLAN_KODLARI</td>
+                                  </tr>
+                                  <tr>
+                                    <td   class="auto-style4">&nbsp;</td>
+                                    <td   class="auto-style3"><span
+ style="font-size: 9pt; font-family: &quot;Helvetica&quot;,sans-serif; color: rgb(127, 127, 127);">Firma:</span></td>
+                                    <td 
+  class="auto-style2">FIRMA_UNVANI</td>
+                                  </tr>
+                                  <tr>
+                                    <td   class="auto-style4">&nbsp;</td>
+                                    <td   class="auto-style3"><span style="font-size: 9pt; font-family: &quot;Helvetica&quot;,sans-serif; color: rgb(127, 127, 127);">Ürün
+/ Kampanya:</span></td>
+                                    <td   class="auto-style2">URUN_KAMPANYA</td>
+                                  </tr>
+                                  <tr>
+                                    <td   class="auto-style4">&nbsp;</td>
+                                    <td   class="auto-style3"><span style="font-size: 9pt; font-family: &quot;Helvetica&quot;,sans-serif; color: rgb(127, 127, 127);">Dönem:</span></td>
+                                    <td   class="auto-style2">DONEMI</td>
+                                  </tr>
+                                  <tr>
+                                    <td style="text-align: right;"  class="auto-style4">&nbsp;</td>
+                                    <td style="text-align: right;"  class="auto-style3"><span style="font-size: 9pt; font-family: &quot;Helvetica&quot;,sans-serif; color: rgb(127, 127, 127);">Tv</span></td>
+                                    <td   class="auto-style2">TELEVIZYON</td>
+                                  </tr>
+                                  <tr>
+                                    <td style="text-align: right;"  class="auto-style4">&nbsp;</td>
+                                    <td style="text-align: right;"  class="auto-style3"><span style="font-size: 9pt; font-family: &quot;Helvetica&quot;,sans-serif; color: rgb(127, 127, 127);">Gazete</span></td>
+                                    <td   class="auto-style2">GAZETE</td>
+                                  </tr>
+                                  <tr>
+                                    <td style="text-align: right;"  class="auto-style4">&nbsp;</td>
+                                    <td style="text-align: right;"  class="auto-style3"><span style="font-size: 9pt; font-family: &quot;Helvetica&quot;,sans-serif; color: rgb(127, 127, 127);">Dergi</span></td>
+                                    <td 
+  class="auto-style2">DERGI</td>
+                                  </tr>
+                                  <tr>
+                                    <td style="text-align: right;"
+  class="auto-style4">&nbsp;</td>
+                                    <td style="text-align: right;"
+  class="auto-style3"><span
+ style="font-size: 9pt; font-family: &quot;Helvetica&quot;,sans-serif; color: rgb(127, 127, 127);">Radyo</span></td>
+                                    <td 
+  class="auto-style2">RADYO</td>
+                                  </tr>
+                                  <tr>
+                                    <td style="text-align: right;"
+  class="auto-style4">&nbsp;</td>
+                                    <td style="text-align: right;"
+  class="auto-style3"><span
+ style="font-size: 9pt; font-family: &quot;Helvetica&quot;,sans-serif; color: rgb(127, 127, 127);">Sinema</span></td>
+                                    <td 
+  class="auto-style2">SINEMA</td>
+                                  </tr>
+                                  <tr>
+                                    <td style="text-align: right;"
+  class="auto-style4">&nbsp;</td>
+                                    <td style="text-align: right;"
+  class="auto-style3"><span
+ style="font-size: 9pt; font-family: &quot;Helvetica&quot;,sans-serif; color: rgb(127, 127, 127);">Outdoor</span></td>
+                                    <td 
+  class="auto-style2">OUTDOOR</td>
+                                  </tr>
+                                  <tr>
+                                    <td style="text-align: right;"
+  class="auto-style4">&nbsp;</td>
+                                    <td style="text-align: right;"
+  class="auto-style3"><span
+ style="font-size: 9pt; font-family: &quot;Helvetica&quot;,sans-serif; color: rgb(127, 127, 127);">Özel
+Proje</span></td>
+                                    <td 
+  class="auto-style2">OZEL_CALISMA</td>
+                                  </tr>
+                                  <tr>
+                                    <td style="text-align: right;"
+  class="auto-style4">&nbsp;</td>
+                                    <td style="text-align: right;"
+  class="auto-style3"><span
+ style="font-size: 9pt; font-family: &quot;Helvetica&quot;,sans-serif; color: rgb(127, 127, 127);">Diğer</span></td>
+                                    <td 
+  class="auto-style2">DIGER</td>
+                                  </tr>
+                                  <tr>
+                                    <td 
+  class="auto-style5">&nbsp;</td>
+                                    <td 
+  class="auto-style1"></td>
+                                    <td 
+  class="auto-style2"></td>
+                                  </tr>
+                                  <tr>
+                                    <td 
+  class="auto-style4">&nbsp;</td>
+                                    <td 
+  class="auto-style3"><span
+ style="font-size: 9pt; font-family: &quot;Helvetica&quot;,sans-serif; color: rgb(127, 127, 127);">Bütçe
+Net UDS</span></td>
+                                    <td 
+  class="auto-style2">TOPLAM_TUTAR_USD</td>
+                                  </tr>
+                                  <tr>
+                                    <td 
+  class="auto-style4">&nbsp;</td>
+                                    <td 
+  class="auto-style3"><span
+ style="font-size: 9pt; font-family: &quot;Helvetica&quot;,sans-serif; color: rgb(127, 127, 127);">Bütçe
+Net &nbsp;TL</span></td>
+                                    <td 
+  class="auto-style2">TOPLAM_TUTAR_TL</td>
+                                  </tr>
+                                  <tr>
+                                    <td 
+  class="auto-style4">&nbsp;</td>
+                                    <td 
+  class="auto-style3"><span
+ style="font-size: 9pt; font-family: &quot;Helvetica&quot;,sans-serif; color: rgb(127, 127, 127);">Açıklama
+                                    </span></td>
+                                    <td 
+class="auto-style2">ACIKLAMA</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                  </span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td
+ style="font-family: Arial,Helvetica,sans-serif; font-size: 14px; padding-left: 10px; padding-right: 10px; background-color: rgb(255, 255, 255);"
+ bgcolor="#ffffff" valign="middle">
+                        <hr style="color: rgb(243, 243, 243);" width="90%">
+                        <table style="background-color: rgb(255, 255, 255);" align="center" border="0" cellpadding="0" cellspacing="0" height="60" width="660">
+                          <tbody>
+                            <tr>
+                              <td align="left" valign="middle"
+ width="25%">
+                              <table
+ style="background-color: rgb(0, 153, 51); color: rgb(255, 255, 255); font-family: Arial,Helvetica,sans-serif; font-size: 14px; -moz-border-radius-topleft: 7px; -moz-border-radius-topright: 7px; -moz-border-radius-bottomright: 7px; -moz-border-radius-bottomleft: 7px; margin-bottom: 5px; margin-top: 5px; width: 311px; height: 50px;"
+ align="left" bgcolor="#009933" border="0"
+ cellpadding="0" cellspacing="0">
+                                <tbody>
+                                  <tr>
+                                    <td align="center"
+ valign="middle"><a href="EMAIL_ONAY_LINKI" style="text-decoration: none; color: rgb(255, 255, 255); display: block; text-shadow: rgb(102, 102, 102) 3px 3px ;">Mailden Onaylama</a></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              </td>
+                              <td valign="middle" width="25%">
+                              <table
+ style="background-color: rgb(51, 102, 204); color: rgb(255, 255, 255); font-family: Arial,Helvetica,sans-serif; font-size: 14px; -moz-border-radius-topleft: 7px; -moz-border-radius-topright: 7px; -moz-border-radius-bottomright: 7px; -moz-border-radius-bottomleft: 7px; margin-bottom: 5px; margin-top: 5px; width: 338px; height: 48px;"
+ align="center" bgcolor="#3366cc" border="0"
+ cellpadding="0" cellspacing="0">
+                                <tbody>
+                                  <tr>
+                                    <td align="center"
+ valign="middle"><a href="WEB_ONAY_LINKI" style="text-decoration: none; color: rgb(255, 255, 255); display: block; text-shadow: rgb(102, 102, 102) 3px 3px ;">Webden onaylama</a></td>                                </tr>
+                                </tbody>
+                              </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <p align="left"><span
+ style="font-family: Arial,Helvetica,sans-serif; font-size: 10px;">DENEME
+DENEME</span><br>
+                        <br>
+                        </p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </span></td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
